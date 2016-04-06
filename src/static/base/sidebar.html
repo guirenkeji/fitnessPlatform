@@ -1,0 +1,62 @@
+<!-- begin #sidebar -->
+<div id="sidebar" class="sidebar" ng-controller="sidebar" ng-init="init()">
+	<!-- begin sidebar scrollbar -->
+	<div data-scrollbar="true" data-height="100%">
+		<!-- begin sidebar nav -->
+		<ul class="nav">
+			<li class="has-sub">
+				<a href="javascript:;">
+					<b class="caret pull-right"></b>
+				    <i class="fa fa-laptop"></i>
+				    <span>用户管理</span>
+			    </a>
+			    <ul class="sub-menu">
+				    <li ng-class="{active:path=='/iso/list'}"><a href="#/iso/list">用户角色</a></li>
+				    <li ng-class="{active:path=='/iso/make'}"><a href="#/iso/make">人事管理</a></li>
+				    <li ng-class="{active:path=='/iso/make'}"><a href="#/iso/make">会员管理</a></li>
+				</ul>
+			</li>
+			<li class="has-sub">
+				<a href="javascript:;">
+					<b class="caret pull-right"></b>
+					<i class="fa fa-inbox"></i> 
+					<span>课程管理</span>
+				</a>
+				<ul class="sub-menu">
+				    <li ng-class="{active:path=='/app/create'}"><a href="#/app/create">团队课程</a></li>
+				    <li ng-class="{active:path=='/app/status'}"><a href="#/app/status">私教课程</a></li>
+				</ul>
+			</li>
+			<li class="has-sub">
+				<a href="javascript:;">
+				    <b class="caret pull-right"></b>
+				    <i class="fa fa-suitcase"></i>
+				    <span>商品管理</span> 
+				</a>
+				<ul class="sub-menu">
+					<li><a href="javascript:;">健身器材</a></li>
+
+				</ul>
+			</li>
+			<li class="has-sub">
+				<a href="javascript:;">
+				    <b class="caret pull-right"></b>
+				    <i class="fa fa-suitcase"></i>
+				    <span>系统管理</span> 
+				</a>
+				<ul class="sub-menu">
+					<li><a href="javascript:;">账套</a></li>
+
+				</ul>
+			</li>
+
+	        <!-- begin sidebar minify button -->
+			<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+	        <!-- end sidebar minify button -->
+		</ul>
+		<!-- end sidebar nav -->
+	</div>
+	<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
