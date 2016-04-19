@@ -11,9 +11,9 @@
 				    <span>用户管理</span>
 			    </a>
 			    <ul class="sub-menu">
-				    <li ng-class="{active:path=='/iso/list'}"><a href="#/iso/list">用户角色</a></li>
-				    <li ng-class="{active:path=='/iso/make'}"><a href="#/iso/make">人事管理</a></li>
-				    <li ng-class="{active:path=='/iso/make'}"><a href="#/iso/make">会员管理</a></li>
+				    <li data-path="{{ path }}" ng-class="{active:path=='/user/management'}"><a href="#/user/usermanagement">用户角色</a></li>
+				    <li ng-class="{active:path == '/personnel/management'}"><a href="#/personnel/management">人事管理</a></li>
+				    <li ng-class="{active:path == '/member/management'}"><a href="#/member/management">会员管理</a></li>
 				</ul>
 			</li>
 			<li class="has-sub">
@@ -23,8 +23,8 @@
 					<span>课程管理</span>
 				</a>
 				<ul class="sub-menu">
-				    <li ng-class="{active:path=='/app/create'}"><a href="#/app/create">团队课程</a></li>
-				    <li ng-class="{active:path=='/app/status'}"><a href="#/app/status">私教课程</a></li>
+				    <li ng-class="{active:path=='/courses/team/management'}"><a href="#/courses/team/management">团队课程</a></li>
+				    <li ng-class="{active:path=='/courses/private/management'}"><a href="#/courses/private/management">私教课程</a></li>
 				</ul>
 			</li>
 			<li class="has-sub">
@@ -34,8 +34,7 @@
 				    <span>商品管理</span> 
 				</a>
 				<ul class="sub-menu">
-					<li><a href="javascript:;">健身器材</a></li>
-
+					<li ng-class="{active:path == '/commodity/management'}"><a href="#/commodity/management">健身器材</a></li>
 				</ul>
 			</li>
 			<li class="has-sub">
