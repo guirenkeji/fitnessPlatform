@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html ng-app="dashboard" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Color Admin | Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="http://fonts.useso.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="/static/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/static/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="/static/assets/css/style.min.css" rel="stylesheet" />
+    <link href="/static/assets/css/style-responsive.min.css" rel="stylesheet" />
+    <link href="/static/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+    <link href="/static/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL STYLE ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="/static/assets/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<link href="/static/assets/plugins/DataTables/css/data-table.css" rel="stylesheet">
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="/static/assets/plugins/pace/pace.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <link rel="stylesheet" type="text/css" href="/static/css/comm.css">
+    {% block header %}{% endblock %}
+</head>
+<body style="height:90%; background-color: #F5F5F5;" ng-app="dashboard">
+    {% block content %}{% endblock %}
+    	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/static/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/static/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="/static/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="/static/assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/static/assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/static/assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="/static/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/static/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/static/assets/plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="/static/assets/plugins/flot/jquery.flot.min.js"></script>
+	<script src="/static/assets/plugins/flot/jquery.flot.time.min.js"></script>
+	<script src="/static/assets/plugins/flot/jquery.flot.resize.min.js"></script>
+	<script src="/static/assets/plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="/static/assets/plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="/static/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="/static/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/static/assets/js/dashboard.min.js"></script>
+	<script src="/static/assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script src="/static/assets/plugins/DataTables/js/jquery.dataTables.js"></script>
+	<script src="/static/assets/js/table-manage-default.demo.min.js"></script>
+	<script src="/static/assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/static/assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+	<script src="/static/assets/js/form-plugins.demo.min.js"></script>
+	
+	<script type="text/javascript" src="/static/js/angular.min.js"></script>
+	<script type="text/javascript" src="/static/js/angular-route.min.js"></script>
+	<script type="text/javascript" src="/static/js/app.js"></script>
+	<script type="text/javascript" src="/static/js/route.js"></script>
+	<script type="text/javascript" src="/static/js/controller.js"></script>
+	<script type="text/javascript" src="/static/js/controller/user.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			setTimeout(function() {
+				App.init();
+				// Dashboard.init();
+				TableManageDefault.init();
+			}, 200)
+		});
+	</script>
+</body>
+</html>

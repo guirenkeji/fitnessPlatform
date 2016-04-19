@@ -1,0 +1,95 @@
+<div ng-controller="userAdd">
+	<div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse" data-sortable-id="form-validation-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload" data-original-title="" title=""><i class="fa fa-repeat"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse" data-original-title="" title=""><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">添加人员</h4>
+            </div>
+            <div class="panel-body panel-form">
+                <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="">
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="fullname">姓名 * :</label>
+						<div class="col-md-6 col-sm-6">
+							<input class="form-control" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="email">性别 * :</label>
+						<div class="col-md-6 col-sm-6">
+							<div class="radio col-md-3">
+								<label>
+									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
+								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
+							</div>
+							<div class="radio col-md-3">
+								<label>
+									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
+								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="website">手机 :</label>
+						<div class="col-md-6 col-sm-6">
+							<input class="form-control" type="text" id="data-phone" data-parsley-type="number" placeholder="请输入手机号码" data-parsley-id="6140"><ul class="parsley-errors-list" id="parsley-id-6140"></ul>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="message">所属帐套 :</label>
+						<div class="col-md-6 col-sm-6">
+							<select class="form-control">
+                                <option value="" selected="">请选择</option>
+                                <option value="AF">Afghanistan</option>
+                                <option value="AL">Albania</option>
+                                <option value="DZ">Algeria</option>
+                                <option value="AS">American Samoa</option>
+                                <option value="AD">Andorra</option>
+                                <option value="AO">Angola</option>
+                                <option value="AI">Anguilla</option>
+                                <option value="AQ">Antarctica</option>
+                                <option value="AG">Antigua and Barbuda</option>
+                            </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="message">身份（角色） :</label>
+						<div class="col-md-6 col-sm-6">
+							<select class="form-control">
+                                <option value="" selected="">请选择</option>
+                                <option value="AF">Afghanistan</option>
+                                <option value="AL">Albania</option>
+                                <option value="DZ">Algeria</option>
+                                <option value="AS">American Samoa</option>
+                                <option value="AD">Andorra</option>
+                                <option value="AO">Angola</option>
+                                <option value="AI">Anguilla</option>
+                                <option value="AQ">Antarctica</option>
+                                <option value="AG">Antigua and Barbuda</option>
+                            </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="message">备注 :</label>
+						<div class="col-md-6 col-sm-6">
+							<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929"></textarea>
+							<ul class="parsley-errors-list" id="parsley-id-8929"></ul>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4"></label>
+						<div class="col-md-6 col-sm-6">
+							<button type="submit" class="btn btn-primary">添加</button>
+						</div>
+					</div>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+</div>
