@@ -21,7 +21,7 @@ class Course(BaseModel):
     Name = Column('Name', VARCHAR(40),nullable=False) #课程名称
     Duration = Column('Duration', Integer,nullable=False) #时长
     Amount = Column('Amount', Integer,nullable=False) #预约人数
-    Coach = relationship('Member') #教练
+#     Coach = relationship('Member') #教练
     HourFee = Column('HourFee', Integer,nullable=False) #课时费
     Comment = Column('Comment', VARCHAR(100)) #备注
     Description = Column('Description', UnicodeText) #课程介绍
@@ -36,9 +36,10 @@ class Plan(BaseModel):
     __tablename__ = 'Plan'
     PlanId = Column('PlanId', Integer,primary_key=True,nullable=False,autoincrement=True) #排课号
     PType = Column('Type', VARCHAR(4),nullable=False) #排课类型  a为团课 b为私教
-    Course = relationship("Course") #课程名称
-    Yard = relationship("Yard") #场地名称
-    Coach = relationship('Member') #教练
+    CourseId = Column('CourseId', Integer,ForeignKey('Course.CourseId'),nullable = False)
+    Course = relationship("Course", foreign_keys=CourseId,primaryjoin=CourseId == Course.CourseId) #课程名称
+#     Yard = relationship("Yard") #场地名称
+#     Coach = relationship('Member') #教练
     BeginDate = Column('BeginDate', DateTime,nullable=False) #开始日期
     EndDate = Column('EndDate', DateTime,nullable=False) #结束日期
     WorkTime = Column('BeginTime', VARCHAR(4)) #教练上班时间

@@ -8,6 +8,8 @@ Created on 2016年4月18日
 from src.models.database import BaseModel
 from sqlalchemy import Column,NVARCHAR,VARCHAR,Integer,DateTime,ForeignKey
 from sqlalchemy.orm import relationship
+from src.models.userprofile import UserProfile
+
 
 class UsageStatus:
     Team = 'a'
