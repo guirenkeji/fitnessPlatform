@@ -6,7 +6,19 @@ Created on Apr 14, 2016
 from src.models.database import get_session
 from src.models.users.models import Employee,Member
 import datetime
+from sqlalchemy import or_
 
+
+def employeeFuzzyQuery(key,offset=0,limit=10):
+    seesion=get_session()
+    querys=seesion.query(Employee)
+    querys=querys.filter(or_(Employee.name.like("%"+key+"%"),Employee.phone.like("%"+key+"%"),Employee.wchat.like("%"+key+"%")))
+
+    
+    querys=querys.offset(offset)  
+    querys=querys.limit(limit)
+    return querys.all()
+    
 def employeeQuery(name=None,phone=None,webChat=None,offset=0,limit=10):
     """
     Query employee by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
@@ -66,8 +78,8 @@ if __name__ == '__main__':
 #         session.add(user1)
 #         session.commit()
 #     session.close()    
-    results= employeeQuery('bruce','189',offset=10,limit=20)
+    results= employeeFuzzyQuery('')
     for item in results:
-        print item.birthday
+        print item.id
     print dir(Employee)
         
