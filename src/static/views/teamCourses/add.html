@@ -13,19 +13,46 @@
             </div>
             <div class="panel-body panel-form">
                 <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="">
-            <div class="form-group">
-                <label>优先级<span class="text-danger">*</span></label>
-                <select class="form-control" ng-model="Crouse.Priority">
-                    <option value="1">高</option>
-                    <option value="2">中</option>
-                    <option value="3">低</option>
-                </select>
-            </div>
-					
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="fullname">课程名称 * :</label>
+						<div class="col-md-6 col-sm-6">
+							<input class="form-control" type="text" id="fullname" name="fullname" placeholder="请输入课程名称" data-parsley-required="true" data-parsley-id="6821">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="email">课程时长 * :</label>
+						<div class="col-md-6 col-sm-6">
+							<input class="form-control" type="text" id="data-class-time" data-parsley-type="number" placeholder="分钟" data-parsley-id="6140"><ul class="parsley-errors-list" id="parsley-id-6140"></ul>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="message">教练 * :</label>
+						<div class="col-md-6 col-sm-6">
+							<select class="form-control">
+                                <option value="" selected="">请选择</option>
+                                <option value="AF">Afghanistan</option>
+                                <option value="AL">Albania</option>
+                                <option value="DZ">Algeria</option>
+                                <option value="AS">American Samoa</option>
+                                <option value="AD">Andorra</option>
+                                <option value="AO">Angola</option>
+                                <option value="AI">Anguilla</option>
+                                <option value="AQ">Antarctica</option>
+                                <option value="AG">Antigua and Barbuda</option>
+                            </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="message">课程备注 :</label>
+						<div class="col-md-6 col-sm-6">
+							<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929"></textarea>
+							<ul class="parsley-errors-list" id="parsley-id-8929"></ul>
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4"></label>
 						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-primary"  ng-disabled="" data-loading-text="正在创建" ng-click="create()" ><i class="fa fa-save fa-fw"></i>保存!!</button>
+							<button type="submit" class="btn btn-primary">添加</button>
 						</div>
 					</div>
                 </form>
