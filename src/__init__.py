@@ -11,4 +11,5 @@ def create_fitnessPlatform_app():
     app.register_module(home)
     app.register_module(user)
     app.register_module(fitnessmanages)
+    app.register_module(course)
     return app
