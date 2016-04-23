@@ -1,0 +1,46 @@
+{% extends 'BaseLayout.html'%}
+{% block header %}{% endblock %}
+{% block content %}
+<div ng-controller="teamCoursesAdd">
+	<div class="col-md-12 ui-sortable">
+        <!-- begin panel -->
+        <div class="panel panel-inverse" data-sortable-id="form-validation-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload" data-original-title="" title=""><i class="fa fa-repeat"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse" data-original-title="" title=""><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+                <h4 class="panel-title">添加团队课程</h4>
+            </div>
+            <div class="panel-body panel-form">
+                <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="">
+            <div class="form-group">
+                <label>优先级<span class="text-danger">*</span></label>
+                <select class="form-control" ng-model="Crouse.Priority">
+                    <option value="1">高</option>
+                    <option value="2">中</option>
+                    <option value="3">低</option>
+                </select>
+            </div>
+					
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4"></label>
+						<div class="col-md-6 col-sm-6">
+							<button type="submit" class="btn btn-primary"  ng-disabled="" data-loading-text="正在创建" ng-click="create()" ><i class="fa fa-save fa-fw"></i>保存!!</button>
+						</div>
+					</div>
+                </form>
+            </div>
+        </div>
+        <!-- end panel -->
+    </div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		FormPlugins.init();
+	});
+</script>
+{% endblock %}

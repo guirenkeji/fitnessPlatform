@@ -17,9 +17,9 @@ PAGESIZE = 20
 
 @course.route('/Course')
 def index():
-    return render_template('Course/List.html')
+    return render_template('teamCourses/add.html')
 
-@course.route('/Course/Create',methods=['POST'])
+@course.route('/Courses/create',methods=['POST'])
 def create_course():
     courseservice.create_course(request.json['CourseName'],request.json['Duration'],request.json['Amount'],
                          request.json['Coach'],request.json['HourFee'],request.json['Comment'],

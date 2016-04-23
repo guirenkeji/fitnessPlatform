@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*- 
 
 import sys
-from src.models import database,UserProfile,UserStatus
+from src.models import database,UserProfile,UserStatus,Course,Plan,Venue,Yard,UsageStatus
 from datetime import datetime
 
 if '-dropcreate' in sys.argv:
