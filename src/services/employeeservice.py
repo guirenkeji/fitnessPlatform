@@ -4,7 +4,8 @@ Created on Apr 14, 2016
 @author: Bruce
 '''
 from src.models.database import get_session
-from src.models.users.models import Employee,Member
+from src.models.employee import Employee
+from src.models.member import Member
 import datetime
 from sqlalchemy import or_
 
@@ -18,6 +19,31 @@ def employeeFuzzyQuery(key,offset=0,limit=10):
     querys=querys.offset(offset)  
     querys=querys.limit(limit)
     return querys.all()
+
+def employeeGetByID(employId):
+    """
+    Query employee by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
+    """
+    seesion=get_session()
+    querys=seesion.query(Employee).filter(Employee.id==employId)
+    employee=querys.first()
+    seesion.close()
+    return employee
+
+def employeeModify(employId,**args):
+    session=get_session()
+    
+    querys=session.query(Employee).filter(Employee.id==employId)
+    employee = querys.first()
+
+    session.add(employee)
+    for item in args:
+        if hasattr(employee, item):
+            setattr(employee, item,args[item])
+        else:
+            raise "Employee Didn't have this property: " + item
+    session.commit()
+    session.close()
     
 def employeeQuery(name=None,phone=None,webChat=None,offset=0,limit=10):
     """
@@ -39,47 +65,44 @@ def employeeAdd(name,phone,webChat=None,birthday=None,address=None,password="cha
     """
     Add Employee, the default password is 'changeme'. At the first login, we need to force change password
     """
+    session=get_session()
+    
     employee=Employee()
+    
     employee.name=name
     employee.phone=phone
     employee.password=password
     if not webChat is None:
-        employee.phone=webChat
+        employee.webChat=webChat
     if not birthday is None:
         employee.phone=birthday
     if not address is None:
         employee.phone=address
         
     for item in args:
-        if hasattr(employee, item):
-            employee=args[item]
+        if hasattr(Employee, item):
+            setattr(employee,item,args[item])
         else:
             raise "Employee Didn't have this property: " + item
-
+    session.add(employee)
+    session.commit()
+    session.close()
     
 if __name__ == '__main__':
     import sys
     from src.models import database,UserProfile,UserStatus
     from datetime import datetime
+    import pprint
 #     database.drop_database()
 #     database.create_database()
     session = database.get_session()
 
     
-#     i=0
-#     while i <200:
-#         print i
-#         user1 = Employee()  
-#         user1.name = 'bruce'+str(i)
-#         user1.phone = u'189'+str(i)
-#         user1.wchat = 'test'+str(i)
-#         user1.birthday = datetime.now()
-#         i=i+1
-#         session.add(user1)
-#         session.commit()
-#     session.close()    
-    results= employeeFuzzyQuery('')
-    for item in results:
-        print item.id
-    print dir(Employee)
+    i=0
+    while i <200:
+        print i
+         
+        employeeAdd(name='memebr'+str(i),phone=177+i,webChat="mywebchat"+str(i),birthday=None,address=None)
+        i +=1
+
         

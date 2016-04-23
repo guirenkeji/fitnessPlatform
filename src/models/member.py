@@ -11,13 +11,6 @@ from sqlalchemy.schema import ForeignKey
 from sqlalchemy import *
 
 
-class bodyMeasurement(BaseModel):
-    __tablename__ = 'body'
-    id = Column(Integer, primary_key=True)
-    
-    body_Info = relationship("Member",primaryjoin="bodyMeasurement.id==Member.body_id",backref="body")
-
-    
 class Member(BaseModel):
     '''
     Member model
@@ -36,7 +29,7 @@ class Member(BaseModel):
     course_num = Column(Integer)
     course_num_free = Column(Integer)
     
-    body_id=Column(Integer, ForeignKey('body.id'))
+    body_info=Column(String(50))
     
     coach_id=Column(Integer, ForeignKey('employees.id'))
     

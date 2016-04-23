@@ -18,13 +18,14 @@ class Employee(BaseModel):
     
     __tablename__ = 'employees'
     id = Column(Integer, primary_key=True)
-    name = Column(String(50),nullable=False)
+    name = Column(String(10),nullable=False)
     phone = Column(String(11),nullable=False)
     wchat = Column(String(30))
     address = Column(String(120))
     birthday = Column(Date())
     password= Column(String(20),nullable=False)
-    role=Column(Enum('coach','manger','front','other',))
+    sex=Column(Enum('men','women'))
+#     role=Column(Enum('coach','manger','front','other',))
     
     coach_Info = relationship("Member",primaryjoin="Employee.id==Member.coach_id",backref="employees")
 
