@@ -11,11 +11,7 @@ def createRole(roles):
     """
     Create Role
     """
-#     roles = {
-#         'User': (Permission.MEMBER_READ, True),
-#         'Admin': (Permission.MEMBER_READ |
-#                   Permission.MEMBER_WRITE, False)
-#     }
+
     seesion=get_session()
     for r in roles:
         
@@ -24,7 +20,6 @@ def createRole(roles):
         if role is None:
             role = Role(name=r)
         role.permissions = roles[r][0]
-        role.default = roles[r][1]
         seesion.add(role)
         seesion.commit()
     seesion.close()
