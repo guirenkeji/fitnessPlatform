@@ -32,10 +32,10 @@ def get_plan_by_ptype(ptype,creator):
     session.close()
     return plans
 
-def create_course(CourseType,Name,Duration,Amount,Coach_id,HourFee,Comment,Description,creator):
+def create_course(CourseType,Name,Duration,Amount,HourFee,Comment,Description,creator,Coach_id=None):
     session = database.get_session()
     p = Course()
-    p.ctype = CourseType.strip()
+    p.CType = CourseType.strip()
     p.Name = Name.strip()
     p.Duration = int(Duration)
     p.Amount = int(Amount)

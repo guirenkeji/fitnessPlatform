@@ -17,7 +17,7 @@ class Course(BaseModel):
 
     __tablename__ = 'Course'
     CourseId = Column('CourseId', Integer,primary_key=True,nullable=False,autoincrement=True) #课程号
-    CType = Column('Type', VARCHAR(4),nullable=False) #课程类型  a为团课 b为私教
+    CType = Column('CType', VARCHAR(4),nullable=False) #课程类型  a为团课 b为私教
     Name = Column('Name', VARCHAR(40),nullable=False) #课程名称
     Duration = Column('Duration', Integer,nullable=False) #时长
     Amount = Column('Amount', Integer,nullable=False) #预约人数
@@ -27,7 +27,7 @@ class Course(BaseModel):
     Description = Column('Description', UnicodeText) #课程介绍
     Creator = Column('Creator', Integer,ForeignKey('UserProfile.UserId'),nullable = False)
     CreateDate = Column('CreateDate', DateTime,nullable=False)
-    Modifier = Column('Modifier', Integer,ForeignKey('UserProfile.UserId'),nullable = False)
+    Modifier = Column('Modifier', Integer,ForeignKey('UserProfile.UserId'))
     LastUpdateDate = Column('LastUpdateDate', DateTime)
     
     
@@ -47,7 +47,7 @@ class Plan(BaseModel):
     WeekSchedule = Column('WeekSchedule', VARCHAR(130),nullable=False) #上课安排：团课为四位上课时间加&字符加字符abcdefg代表的星期一至七中上课日期，多组安排以符号^连接   私教为字符abcdefg代表的星期一至七中上课日期
     Creator = Column('Creator', Integer,ForeignKey('UserProfile.UserId'),nullable = False)
     CreateDate = Column('CreateDate', DateTime,nullable=False)
-    Modifier = Column('Modifier', Integer,ForeignKey('UserProfile.UserId'),nullable = False)
+    Modifier = Column('Modifier', Integer,ForeignKey('UserProfile.UserId'))
     LastUpdateDate = Column('LastUpdateDate', DateTime)
     
     
