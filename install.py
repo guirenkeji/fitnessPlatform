@@ -1,14 +1,14 @@
 # -*- coding: UTF-8 -*- 
 
 import sys
-from src.models import database,UserProfile,UserStatus,Course,Plan,Venue,Yard,UsageStatus,Employee,Member
+from src.models import database,UserProfile,UserStatus,Course,Plan,Venue,Yard,UsageStatus,Employee,Member,Role
 
 from datetime import datetime
 
 if '-dropcreate' in sys.argv:
     database.drop_database()
     print(u'删除数据库完成')
-
+# database.drop_database()
 database.create_database()
 print(u'创建数据库完成')
 

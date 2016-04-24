@@ -6,6 +6,7 @@ Created on Apr 14, 2016
 from src.models.database import get_session
 from src.models.employee import Employee
 from src.models.member import Member
+from src.services import roleservice
 import datetime
 from sqlalchemy import or_
 
@@ -87,7 +88,11 @@ def employeeAdd(name,phone,webChat=None,birthday=None,address=None,password="cha
     session.add(employee)
     session.commit()
     session.close()
-    
+
+def employeePermissionCheck(employeeID,permission):
+    user=employeeGetByID(employeeID)
+    return roleservice.varifyPermission(permission,user.Role)
+        
 if __name__ == '__main__':
     import sys
     from src.models import database,UserProfile,UserStatus

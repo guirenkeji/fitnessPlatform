@@ -52,12 +52,12 @@ class Order(BaseModel):
 
     __tablename__ = 'Order'
     OrderId = Column('OrderId', Integer,primary_key=True,nullable=False,autoincrement=True) #订单序号
-    Member = relationship('Member') #会员
+#     Member = relationship('Member') #会员
     PayMode = Column('PayMode', Integer,nullable=False) #支付方式    
     PayStatus = Column('PayStatus', Integer,nullable=False) #支付状态
     OrderType = Column('OrderType', Integer,nullable=False) #订单类型
-    Goods = relationship('Goods') #商品
-    Course = relationship('Course') #课程
+#     Goods = relationship('Goods') #商品
+#     Course = relationship('Course') #课程
     Amount = Column('Amount', Integer,default=1) #数量
     Rebate = Column('Rebate', Integer,default=100) #实际折扣 
     Comment = Column('Comment', VARCHAR(100)) #备注

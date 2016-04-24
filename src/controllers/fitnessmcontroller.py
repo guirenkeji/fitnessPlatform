@@ -6,14 +6,11 @@ from src.fitnessconfig import *
 from src.services import userservice,employeeservice,memberservice
 from src.models.userprofile import UserStatus
 
-
-
 fitnessmanages = Module(__name__)
 
 
 def date_handler(obj):
     return obj.isoformat() if hasattr(obj, 'isoformat') else obj
-
 
 @fitnessmanages.route('/fitnessmanages')
 def index():

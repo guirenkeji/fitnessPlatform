@@ -89,6 +89,7 @@ def memberAdd(name,phone,webChat=None,birthday=None,address=None,expenses_not_qu
     session.add(member)
     session.commit()
     session.close()
+    
 
 if __name__ == '__main__':
     import sys

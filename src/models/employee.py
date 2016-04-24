@@ -25,7 +25,7 @@ class Employee(BaseModel):
     birthday = Column(Date())
     password= Column(String(20),nullable=False)
     sex=Column(Enum('men','women'))
-#     role=Column(Enum('coach','manger','front','other',))
+    role=Column(Integer, ForeignKey('role.id'))
     
     coach_Info = relationship("Member",primaryjoin="Employee.id==Member.coach_id",backref="employees")
 
