@@ -24,4 +24,11 @@ dashboard.controller('commodityAdd', ['$scope','$http', function($scope,$http){
     		}
 		})
 	}
-}]);
+}])
+
+dashboard.controller('commodityRecord', ['$scope', function($scope){
+
+    $scope.init = function () {
+        // App.init();
+    }
+}])

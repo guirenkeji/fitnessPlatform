@@ -39,6 +39,10 @@ dashboard.config(['$routeProvider',function ($routeProvider) {
         templateUrl: '/static/views/commodity/add.html',
         controller: 'commodityAdd'
     })
+    .when('/commodity/record', {
+        templateUrl: '/static/views/commodity/record.html',
+        controller: 'commodityRecord'
+    })
 
     .when('/courses/team/management', {
         templateUrl: '/static/views/teamCourses/management.html',
