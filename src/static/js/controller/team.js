@@ -1,6 +1,13 @@
-dashboard.controller('teamCoursesManagement', ['$scope', function($scope){
+dashboard.controller('teamCoursesManagement2', ['$scope', function($scope){
 
 	$scope.init = function () {
+		$scope.courselist = {};
+		if($("#PageNo").val()){var PageNo = $("#PageNo").val();}else{var PageNo = 1;};
+		$http.post('/courses/team/management/add', PageNo,$http).success(function (result) {
+        	if (result.data) {
+        		$scope.courselist = result.data;
+            }
+        });
 		// App.init();
 	}
 }])

@@ -3,7 +3,7 @@
 		vertical-align: middle!important;
 	}
 </style>
-<div ng-controller="teamCoursesManagement">
+<div ng-controller="teamCoursesManagement as team">
 	<div class="col-12">
 		<form class="user-management-search">
 	        <div class="input-group m-b-15">
@@ -47,19 +47,22 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
+							
+								<tr ng-repeat="course in team.courselist">
+									<td>{{$index + 1}}</td>
+									<td>{{course.Name}}</td>
+									<td>{{course.Duration}}</td>
+									<td>{{course.Amount}}</td>
+									<td>{{course.Coach}}</td>
+									<td>{{course.CreateDate}}</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-sm m-r-5 m-b-5">修改</button>
 										<button type="button" class="btn btn-danger btn-sm m-r-5 m-b-5">删除</button>
 										<button type="button" class="btn btn-success btn-sm m-r-5 m-b-5">约课</button>
 									</td>
+									
 								</tr>
+								
 							</tbody>
 						</table>
 					</div>

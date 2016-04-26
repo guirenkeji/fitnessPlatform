@@ -1,9 +1,21 @@
 // 团队课程
-dashboard.controller('teamCoursesManagement', ['$scope', function($scope){
-
-    $scope.init = function () {
-        // App.init();
-    }
+dashboard.controller('teamCoursesManagement', ['$scope', '$http', function($scope,$http){
+		var self = this;
+		$scope.Page = {};
+		if($("#PageNo").val()){
+			$scope.Page.PageNo = $("#PageNo").val();
+		}else{
+			$scope.Page.PageNo = 1;
+		}
+		$http.post('/courses/team/query', $scope.Page, $http).success(function (result) {
+	    	if (result.data) {
+	    		self.courselist = result.data;
+	        }
+	    }).error(function (data, status, headers, config) { });
+	
+	    $scope.init = function () {
+			// App.init();
+	    }
 }])
 
 dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http){
@@ -27,10 +39,22 @@ dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http)
 }])
 
 // 私教课程
-dashboard.controller('privateCoursesManagement', ['$scope', function($scope){
+dashboard.controller('privateCoursesManagement', ['$scope', '$http', function($scope,$http){
+	var self = this;
+	$scope.Page = {};
+	if($("#PageNo").val()){
+		$scope.Page.PageNo = $("#PageNo").val();
+	}else{
+		$scope.Page.PageNo = 1;
+	}
+	$http.post('/courses/private/query', $scope.Page, $http).success(function (result) {
+    	if (result.data) {
+    		self.courselist = result.data;
+        }
+    }).error(function (data, status, headers, config) { });
 
     $scope.init = function () {
-        // App.init();
+		// App.init();
     }
 }])
 

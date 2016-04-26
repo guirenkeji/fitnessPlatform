@@ -80,13 +80,13 @@ def create_plan(PlanType,CourseId,Yardid,BeginDate,EndDate,WorkTime,OffTime,Week
     session.add(p)
     session.commit()
     session.close()
-    
-def query(page_no,page_size,order_by,current_user):
+      
+def query(page_no,page_size,order_by,current_user,CType='a'):
     session = database.get_session()
-    subdata = session.query(Course).filter(Course.Creator == current_user).all()
+    subdata = session.query(Course).filter(Course.Creator == current_user).filter(Course.CType == CType)
     subdata_list = []
     for i in subdata:
-        subdata_list.append(i[0])    
+        subdata_list.append(i.CourseId)    
     (data,row_count,page_count,page_no) = database.query_more(subdata,order_by,page_no,page_size)
     session.close()
     return (data,subdata_list,row_count,page_count,page_no)
