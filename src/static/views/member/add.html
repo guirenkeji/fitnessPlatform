@@ -12,7 +12,7 @@
                 <h4 class="panel-title">添加人员</h4>
             </div>
             <div class="panel-body panel-form">
-                <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="">
+                <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="" >
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">姓名 * :</label>
 						<div class="col-md-6 col-sm-6">
@@ -43,7 +43,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">微信号码 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-phone" placeholder="请输入微信号码" data-parsley-id="6141"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
+							<input class="form-control" type="text" id="data-wchat" placeholder="请输入微信号码" data-parsley-id="6141"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">住宿地址 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-phone" placeholder="请输入住宿地址" data-parsley-id="6143"><ul class="parsley-errors-list" id="parsley-id-6143"></ul>
+							<input class="form-control"  type="text" id="data-address" placeholder="请输入住宿地址" data-parsley-id="6143"><ul class="parsley-errors-list" id="parsley-id-6143"></ul>
 						</div>
 					</div>
 					<div class="form-group">
@@ -85,7 +85,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4"></label>
 						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-primary">添加</button>
+							<button ng-click="create()" type="submit" class="btn btn-primary">添加</button>
 						</div>
 					</div>
                 </form>
