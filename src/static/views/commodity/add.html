@@ -16,11 +16,11 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">商品名 * :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
+							<input class="form-control" type="text" id="fullname" name="fullname" placeholder="请输入商品名" data-parsley-required="true" data-parsley-id="6821">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-4 col-sm-4" for="email">类型 * :</label>
+						<label class="control-label col-md-4 col-sm-4" for="email">课程 * :</label>
 						<div class="col-md-6 col-sm-6">
 							<div class="radio col-md-3">
 								<label>
@@ -37,19 +37,30 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">价格 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-phone" data-parsley-type="number" placeholder="请输入手机号码" data-parsley-id="6140"><ul class="parsley-errors-list" id="parsley-id-6140"></ul>
+							<input class="form-control" type="text" id="data-phone" data-parsley-type="number" placeholder="请输入价格" data-parsley-id="6140"><ul class="parsley-errors-list" id="parsley-id-6140"></ul>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">课程数 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-phone" placeholder="请输入微信号码" data-parsley-id="6141"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
+							<input class="form-control" type="text" id="data-phone" placeholder="请输入课程数" data-parsley-id="6141"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website"> 学员:</label>
 						<div class="col-md-6 col-sm-6"> 
-							<input type="text" class="form-control" id="datepicker-default" placeholder="请选择出生日期" value="">
+							<select class="form-control">
+                                <option value="" selected="">请选择</option>
+                                <option value="AF">Afghanistan</option>
+                                <option value="AL">Albania</option>
+                                <option value="DZ">Algeria</option>
+                                <option value="AS">American Samoa</option>
+                                <option value="AD">Andorra</option>
+                                <option value="AO">Angola</option>
+                                <option value="AI">Anguilla</option>
+                                <option value="AQ">Antarctica</option>
+                                <option value="AG">Antigua and Barbuda</option>
+                            </select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -97,6 +108,7 @@
 
 <script>
 	$(document).ready(function() {
-		FormPlugins.init();
+		// FormPlugins.init();
+		TableManageDefault.init();
 	});
 </script>
