@@ -28,7 +28,7 @@ class Member(BaseModel):
     expenses_not_quota=Column(Integer)
     course_num = Column(Integer)
     course_num_free = Column(Integer)
-    
+    comments = Column(String(200))
     body_info=Column(String(50))
     
     coach_id=Column(Integer, ForeignKey('employees.id'))

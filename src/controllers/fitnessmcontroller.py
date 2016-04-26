@@ -18,6 +18,7 @@ def index():
 
 @fitnessmanages.route('/fitnessmanages/addEmployee',methods=["POST"])
 def addNewEmployee():
+      
     
     name = request.form.get('name')
     phone = request.form.get('phone')
@@ -26,18 +27,22 @@ def addNewEmployee():
     address = request.form.get('address',None)
     sex = request.form.get('sex')
     employeeservice.employeeAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,sex=sex)
-    return redirect('/fitnessmanages?fullname=&message=#/personnel/management/add')
+    return "success"
 
 @fitnessmanages.route('/fitnessmanages/addMember',methods=["POST"])
 def addNewMember():
-    
+    import pprint
+    print "***"*20
+    pprint.pprint(request.form)
+    print "+++"*20
+    pprint.pprint(request.form['name'])
     name = request.form.get('name')
     phone = request.form.get('phone')
     wchat = request.form.get('wchat',None)
     birthday = request.form.get('birthday',None)
     address = request.form.get('address',None)
     memberservice.memberAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address)
-    return redirect('/fitnessmanages?fullname=&message=#/personnel/management/add')
+    return jsonify(created=True)
 
 @fitnessmanages.route('/fitnessmanages/modifyEmployee',methods=["GET"])
 def modifyEmployee():

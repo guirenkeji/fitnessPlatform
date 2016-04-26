@@ -36,32 +36,29 @@ dashboard.controller('memberManagement', ['$scope', function($scope){
 
 	$scope.init = function () {
 		// App.init();
+		
 	}
 }])
 
 
-dashboard.controller('memberAdd', ['$scope', function($scope){
+dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
 		// App.init();
+		$scope.formdata = {};
 	}
 
 	$scope.create = function () {
-        var btn = $("#btnCreate");
-        btn.button('loading');
-		$scope.Course = {};
-        $scope.Course.name = $("#fullname").val();
-        $scope.Course.birthday = $("#data-class-time").val();
-		$scope.Course.sex=$("#radiorequired").val();
-		$scope.Course.phone=$("#data-phone").val();
-		$scope.Course.address=$("#data-address").val();
-        $scope.Course.wchat=$("#data-wchat").val();
-        $scope.Course.comments = $("#message").val();
-        $http.post('/fitnessmanages/addMember', $scope.Course).success(function (result) {
+        
+		
+        $http({
+          method  : 'POST',
+          url     : '/fitnessmanages/addMember',
+          data    : $scope.formdata, 
+          headers : {'Content-Type': 'application/x-www-form-urlencoded'} 
+         }).success(function (result) {
         	if (result.created) {
                 $scope.AddSuccess = true;
-                btn.button('reset');
-                window.location.href = "/Project/Task/" + result.ProjectId;
             }
         });
     }
