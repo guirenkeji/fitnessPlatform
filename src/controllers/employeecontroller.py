@@ -16,9 +16,7 @@ def date_handler(obj):
 def addNewEmployee():
       
     addOne= request.get_json()
-    print "***"*20
-    import pprint
-    pprint.pprint(addOne)
+    
     name = addOne.get('name')
     comments=addOne.get('comments',None)
     phone = addOne.get('phone')
