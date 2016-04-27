@@ -24,12 +24,12 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="radio col-md-3">
 								<label>
-									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
+									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="men" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
 								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
 							</div>
 							<div class="radio col-md-3">
 								<label>
-									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
+									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="women" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
 								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
 							</div>
 						</div>
@@ -43,19 +43,19 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">微信号码 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-wchat" placeholder="请输入微信号码" data-parsley-id="6141" ng-model="formdata.wchat"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
+							<input ng-model="formdata.phone" class="form-control" type="text" id="data-wchat" placeholder="请输入微信号码" data-parsley-id="6141" ><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">出生日期 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input type="text" class="form-control" id="datepicker-default" placeholder="请选择出生日期" value="" ng-model="formdata.birthday">
+							<input ng-model="formdata.birthday" type="text" class="form-control" id="datepicker-default" placeholder="请选择出生日期" value="" >
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-4 col-sm-4" for="website" ng-model="formdata.address">住宿地址 :</label>
+						<label class="control-label col-md-4 col-sm-4" for="website">住宿地址 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control"  type="text" id="data-address" placeholder="请输入住宿地址" data-parsley-id="6143"><ul class="parsley-errors-list" id="parsley-id-6143"></ul>
+							<input ng-model="formdata.address" class="form-control"  type="text" id="data-address" placeholder="请输入住宿地址" data-parsley-id="6143"><ul class="parsley-errors-list" id="parsley-id-6143"></ul>
 						</div>
 					</div>
 					<div class="form-group">
@@ -95,7 +95,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="message">备注 :</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929" ng-model="formdata.comments"></textarea>
+							<textarea ng-model="formdata.comments" class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929" ></textarea>
 							<ul class="parsley-errors-list" id="parsley-id-8929"></ul>
 						</div>
 					</div>
