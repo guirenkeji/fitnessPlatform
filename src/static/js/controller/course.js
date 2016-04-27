@@ -28,11 +28,11 @@ dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http)
         $scope.Course.dataclasstime = $("#data-class-time").val();
         $scope.Course.message = $("#message").val();
 
-        $http.post('/courses/team/management/add', $scope.Course,$http).then(function (result) {
+        $http.post('/courses/team/management/add', $scope.Course).success(function (result) {
             if (result.created) {
                 $scope.AddSuccess = true;
                 btn.button('reset');
-                window.location.href = "/Project/Task/" + result.ProjectId;
+                window.location.href = "fitnessmanages#/courses/team/management";
             }
         });
     }
