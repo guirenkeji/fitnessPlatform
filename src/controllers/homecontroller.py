@@ -10,11 +10,11 @@ home = Module(__name__)
 
 @home.route('/')
 def index():
-    # if 'username' in session and not session['username'] == None:
-    #     return redirect('/fitnessmanages')
-    # return render_template('Login.html',
-    #                        title = u'登陆'
-    #                        )
+    if 'username' in session and not session['username'] == None:
+        return redirect('/fitnessmanages')
+    return render_template('Login.html',
+                           title = u'登陆'
+                           )
     return redirect('/fitnessmanages')
 
 @home.route('/Login',methods=['POST'])

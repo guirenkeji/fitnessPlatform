@@ -22,13 +22,14 @@ class Member(BaseModel):
     phone = Column(String(11),nullable=False)
     wchat = Column(String(30))
     type=Column(Enum('vip','normal'))
+    sex=Column(Enum('men','women'))
     birthday = Column(Date())
     expenses_not_quota_password= Column(String(20),nullable=False)
     expenses_quota=Column(Integer)
     expenses_not_quota=Column(Integer)
     course_num = Column(Integer)
     course_num_free = Column(Integer)
-    
+    comments = Column(String(200))
     body_info=Column(String(50))
     
     coach_id=Column(Integer, ForeignKey('employees.id'))

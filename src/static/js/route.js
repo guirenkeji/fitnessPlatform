@@ -60,7 +60,11 @@ dashboard.config(['$routeProvider',function ($routeProvider) {
         templateUrl: '/static/views/teamCourses/add.html',
         controller: 'teamCoursesAdd'
     })
-
+    .when('/courses/team/management/:id', {
+        templateUrl: '/static/views/teamCourses/detail.html',
+        controller: 'teamCoursesUpdate'
+    })
+    
     .when('/courses/private/management', {
         templateUrl: '/static/views/privateCourses/management.html',
         controller: 'privateCoursesManagement'

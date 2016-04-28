@@ -19,6 +19,19 @@ def memberFuzzyQuery(key,offset=0,limit=10):
     querys=querys.limit(limit)
     return querys.all()
 
+def memberDeleteByID(memberId):
+    """
+    Query member by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
+    """
+    seesion=get_session()
+    querys=seesion.query(Member).filter(Member.id==memberId)
+    member=querys.first()
+    
+    seesion.delete(member)
+    seesion.commit()
+    seesion.close()
+    return member
+
 def memberGetByID(employId):
     """
     Query member by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
@@ -75,11 +88,11 @@ def memberAdd(name,phone,webChat=None,birthday=None,address=None,expenses_not_qu
     member.phone=phone
     member.expenses_not_quota_password=expenses_not_quota_password
     if not webChat is None:
-        member.webChat=webChat
+        member.wchat=webChat
     if not birthday is None:
-        member.phone=birthday
+        member.birthday=birthday
     if not address is None:
-        member.phone=address
+        member.address=address
     
     for item in args:
         if hasattr(Member, item):
@@ -97,11 +110,21 @@ if __name__ == '__main__':
     from datetime import datetime
     import pprint
     
-    i=1
-    while i <200:
-        print i
-         
-        memberAdd(name='memebr'+str(i),phone=177+i,webChat="mywebchat"+str(i),birthday=None,address=None,expenses_not_quota_password="changeme",coach_id=i,body_info="Good "+ str(i))
-        i +=1
+    addOne={u'birthday': u'04/26/2016',
+ u'comments': u'asfdasfaf',
+ u'name': u'Bruce Shen',
+ u'phone': u'18980853190',
+ u'sex': u'foo',
+ u'wchat': u'23232323'}
+    name = addOne.get('name')
+    phone = addOne.get('phone')
+    wchat = addOne.get('wchat',None)
+    birthday = addOne.get('birthday',None)
+    birthday=datetime.strptime(birthday, '%m/%d/%Y').date() 
+    address = addOne.get('address',None)
+    memberAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,comments=addOne['comments'])
+
+    
+#     memberAdd(name='memebr'+str(i),phone=177+i,webChat="mywebchat"+str(i),birthday=None,address=None,expenses_not_quota_password="changeme",coach_id=i,body_info="Good "+ str(i))
     
     results= memberFuzzyQuery('1')
