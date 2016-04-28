@@ -57,7 +57,7 @@ dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
 
 
 // 人事管理
-dashboard.controller('personnelManagement', ['$scope', '$http', function($scope,$http){
+dashboard.controller('personnelManagement', ['$scope', '$http', '$route',function($scope,$http,$route){
 
 	$scope.init = function () {
 		// App.init();
@@ -77,6 +77,20 @@ dashboard.controller('personnelManagement', ['$scope', '$http', function($scope,
     		
         }
     }).error(function (data, status, headers, config) { });
+	
+	$scope.Delete = function (employeeID) {
+        var btn = $("#btnDelete");
+        btn.button('loading');
+        $http.post('/fitnessmanages/deleteEmployee', { id: employeeID }).success(function (result) {
+            if (result.deleted) {
+                $scope.DeleteSuccess = true;
+                btn.button('reset');
+//                window.location.href = 'fitnessmanages#/memeber/management';
+                $route.reload();
+            }
+        });
+    }
+	
 }])
 
 
@@ -107,15 +121,6 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
     }
 }])
 
-// 会员管理
-dashboard.controller('memberManagement', ['$scope', function($scope){
-
-	$scope.init = function () {
-		// App.init();
-		
-	}
-}])
-
 
 dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 
@@ -144,7 +149,7 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
     }
 }])
 
-dashboard.controller('memberManagement', ['$scope', '$http', function($scope,$http){
+dashboard.controller('memberManagement', ['$scope', '$http','$route', function($scope,$http,$route){
 		var self = this;
 		$scope.Page = {};
 		if($("#PageNo").val()){
@@ -159,6 +164,19 @@ dashboard.controller('memberManagement', ['$scope', '$http', function($scope,$ht
 	    		
 	        }
 	    }).error(function (data, status, headers, config) { });
+		
+		$scope.Delete = function (memberID) {
+	        var btn = $("#btnDelete");
+	        btn.button('loading');
+	        $http.post('/fitnessmanages/deleteMember', { id: memberID }).success(function (result) {
+	            if (result.deleted) {
+	                $scope.DeleteSuccess = true;
+	                btn.button('reset');
+//	                window.location.href = 'fitnessmanages#/memeber/management';
+	                $route.reload();
+	            }
+	        });
+	    }
 		
 	
 	    $scope.init = function () {

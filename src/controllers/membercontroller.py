@@ -30,6 +30,12 @@ def addNewMember():
     memberservice.memberAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,comments=comments)
     return jsonify(created=True)
 
+@memberManages.route('/fitnessmanages/deleteMember',methods=["POST"])
+def deleteMember():
+    memberservice.memberDeleteByID(request.json['id'])
+    
+    return jsonify(deleted=True)
+
 @memberManages.route('/fitnessmanages/modifyMember',methods=["GET"])
 def modifyMember():
     argDict=request.args.to_dict()

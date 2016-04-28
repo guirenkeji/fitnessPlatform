@@ -19,6 +19,19 @@ def memberFuzzyQuery(key,offset=0,limit=10):
     querys=querys.limit(limit)
     return querys.all()
 
+def memberDeleteByID(memberId):
+    """
+    Query member by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
+    """
+    seesion=get_session()
+    querys=seesion.query(Member).filter(Member.id==memberId)
+    member=querys.first()
+    
+    seesion.delete(member)
+    seesion.commit()
+    seesion.close()
+    return member
+
 def memberGetByID(employId):
     """
     Query member by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
