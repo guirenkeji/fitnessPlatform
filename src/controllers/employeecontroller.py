@@ -57,6 +57,12 @@ def searchEmployee():
     return jsonify(data=results,row_count=len(employees),page_count=1,page_no=request.json['PageNo'])
 
 
+@employeemanages.route('/fitnessmanages/deleteEmployee',methods=["POST"])
+def deleteEmployeeByID():
+    employeeservice.employeeDeleteByID(request.json['id'])
+    
+    return jsonify(deleted=True)
+
 @employeemanages.route('/fitnessmanages/getEmployee')
 def getEmployeeByID():
     eid = request.args.get('id')

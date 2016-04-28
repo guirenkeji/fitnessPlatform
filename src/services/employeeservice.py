@@ -31,6 +31,19 @@ def employeeGetByID(employId):
     seesion.close()
     return employee
 
+def employeeDeleteByID(employId):
+    """
+    Delete employee by id
+    """
+    seesion=get_session()
+    querys=seesion.query(Employee).filter(Employee.id==employId)
+    employee=querys.first()
+    
+    seesion.delete(employee)
+    seesion.commit()
+    seesion.close()
+    return employee
+
 def employeeModify(employId,**args):
     session=get_session()
     
