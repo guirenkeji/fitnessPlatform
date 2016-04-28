@@ -4,15 +4,16 @@ Created on Apr 24, 2016
 @author: shenb2
 '''
 
-from src.models import Role,Permission
-from src.models.database import get_session
+from src.models.role import Role,Permission
+from src.models import database
+ 
 
 def createRole(roles):
     """
     Create Role
     """
 
-    seesion=get_session()
+    seesion=database.get_session()
     for r in roles:
         
         querys=seesion.query(Role)
@@ -24,8 +25,25 @@ def createRole(roles):
         seesion.commit()
     seesion.close()
     
+def createRoleAdd(rolename):
+    r = Role()
+    seesion=database.get_session()
+    r.name = rolename.strip()
+
+    seesion.add(r)
+
+    seesion.commit()
+    seesion.close()
+       
+def query_role():
+    
+    session = database.get_session()
+
+    rolelist = session.query(Role).all()
+    session.close()
+    return rolelist    
 def varifyPermission(requiredPerm,roleID):
-    seesion=get_session()
+    seesion=database.get_session()
     querys=seesion.query(Role)
     role = querys.filter_by(id=roleID).first()
     return role.permissions & requiredPerm

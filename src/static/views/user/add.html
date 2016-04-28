@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">角色 * :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
+							<input class="form-control" type="text" id="fullname" name="fullname" ng-model=role.name placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
 						</div>
 					</div>
 		
@@ -41,15 +41,9 @@
 						<div class="col-md-6 col-sm-6">
 							<select class="form-control">
                                 <option value="" selected="">请选择</option>
-                                <option value="AF">Afghanistan</option>
-                                <option value="AL">Albania</option>
-                                <option value="DZ">Algeria</option>
-                                <option value="AS">American Samoa</option>
-                                <option value="AD">Andorra</option>
-                                <option value="AO">Angola</option>
-                                <option value="AI">Anguilla</option>
-                                <option value="AQ">Antarctica</option>
-                                <option value="AG">Antigua and Barbuda</option>
+                                <option value="AF">诸暨</option>
+                                <option value="AL">杭州</option>
+                           
                             </select>
 						</div>
 					</div>
@@ -63,7 +57,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4"></label>
 						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-primary">添加</button>
+							<button type="submit" class="btn btn-primary" ng-click="create()">添加</button>
 						</div>
 					</div>
                 </form>

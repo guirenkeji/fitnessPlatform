@@ -14,4 +14,5 @@ def create_fitnessPlatform_app():
     app.register_module(course)
     app.register_module(employeemanages)
     app.register_module(memberManages)
+    app.register_module(role)
     return app

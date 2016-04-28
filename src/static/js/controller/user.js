@@ -1,11 +1,58 @@
 
-// 用户角色
-dashboard.controller('userManagement', ['$scope', function($scope){
 
+// 用户角色
+dashboard.controller('userManagement', ['$scope','$http', function($scope,$http){
+//	$scpoe.query();
+	$scope.Query = { PageNo: 1, role: ''};
 	$scope.init = function () {
 		// App.init();
 	};
 	$scope.formData = {};
+	$scope.Delete = function () {
+        var btn = $("#btnDelete");
+        btn.button('loading');
+        $http.post('/Delete', { CourseId: $scope.Course.id }).success(function (result) {
+            if (result.deleted) {
+                $scope.DeleteSuccess = true;
+                btn.button('reset');
+                window.location.href = 'fitnessmanages#/courses/team/management';
+            }
+        });
+    }
+    $scope.update = function () {
+        var btn = $("#btnUpdate");
+        btn.button('loading');
+        $http.post('/Update', $scope.Course).success(function (result) {
+            if (result.updated) {
+                $scope.UpdateSuccess = true;
+                btn.button('reset');
+                window.location.href = 'fitnessmanages#/courses/team/management';
+            }
+        });
+    }
+    $scope.query = function () {
+        var btn = $("#btnQuery");
+        btn.button('loading');
+        $http.post('/role/query',$scope.Query).success(function (result) {
+            btn.button('reset');
+            $scope.RoleList = result.data;
+
+        });
+    }    
+
+}])
+
+dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
+
+    $scope.create = function () {
+        $http.post('/role/add', $scope.role).success(function (result) {
+        	if (result.created) {
+                alert("Success");
+                window.location.href = 'fitnessmanages#/user/management'
+            }
+        });
+    }
+	
 }])
 
 
@@ -119,55 +166,5 @@ dashboard.controller('memberManagement', ['$scope', '$http', function($scope,$ht
 	    }
 }])
 
-// 用户角色
-dashboard.controller('userManagement', ['$scope', function($scope){
-
-	$scope.init = function () {
-		// App.init();
-	};
-	$scope.formData = {};
-	$scope.Delete = function () {
-        var btn = $("#btnDelete");
-        btn.button('loading');
-        $http.post('/Delete', { CourseId: $scope.Course.id }).success(function (result) {
-            if (result.deleted) {
-                $scope.DeleteSuccess = true;
-                btn.button('reset');
-                window.location.href = 'fitnessmanages#/courses/team/management';
-            }
-        });
-    }
-    $scope.update = function () {
-        var btn = $("#btnUpdate");
-        btn.button('loading');
-        $http.post('/Update', $scope.Course).success(function (result) {
-            if (result.updated) {
-                $scope.UpdateSuccess = true;
-                btn.button('reset');
-                window.location.href = 'fitnessmanages#/courses/team/management';
-            }
-        });
-    }
-    $scope.query = function () {
-        var btn = $("#btnQuery");
-        btn.button('loading');
-        $http.post('/query', $scope.Query).success(function (result) {
-            btn.button('reset');
-            $scope.Curse = result.data;
-            $scope.Query.RowCount = result.row_count;
-            $scope.Query.PageCount = result.page_count;
-            $scope.Query.PageNo = result.page_no;
-        });
-    }    
-
-}])
-
-
-dashboard.controller('userAdd', ['$scope', function($scope){
-
-	$scope.init = function () {
-		// App.init();
-	}
-}])
 
 
