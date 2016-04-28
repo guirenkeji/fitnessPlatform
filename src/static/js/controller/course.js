@@ -76,6 +76,20 @@ dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http)
     }
 }])
 
+dashboard.controller('teamCoursesUpdate', ['$scope','$http', function($scope,$http){
+	$scope.Course = {};
+	$scope.Course.name = "test";
+	$scope.update = function () {
+        $http.post('/courses/team/management/add', $scope.Course,$http).success(function (result) {
+        	if (result.created) {
+                alert("Success");
+                
+            }
+        });
+    }
+}])
+
+
 // 私教课程
 dashboard.controller('privateCoursesManagement', ['$scope', '$http', function($scope,$http){
 	var self = this;
@@ -95,6 +109,7 @@ dashboard.controller('privateCoursesManagement', ['$scope', '$http', function($s
 		// App.init();
     }
 }])
+
 
 dashboard.controller('privateCoursesAdd', ['$scope','$http', function($scope,$http){
     $scope.create = function () {
