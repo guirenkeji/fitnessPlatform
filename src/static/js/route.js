@@ -8,9 +8,9 @@ dashboard.config(['$routeProvider',function ($routeProvider) {
         templateUrl: '/static/views/user/add.html',
         controller: 'userAdd'
     })
-    .when('/user/competence', {
-        templateUrl: '/static/views/user/competence.html',
-        controller: 'userCompetence'
+    .when('/user/management/modify', {
+        templateUrl: '/static/views/user/modify.html',
+        controller: 'userModify'
     })
 
     .when('/personnel/management', {
@@ -21,6 +21,10 @@ dashboard.config(['$routeProvider',function ($routeProvider) {
         templateUrl: '/static/views/personnel/add.html',
         controller: 'personnelAdd'
     })
+    .when('/personnel/management/modify', {
+        templateUrl: '/static/views/personnel/modify.html',
+        controller: 'personnelModify'
+    })
 
     .when('/member/management', {
         templateUrl: '/static/views/member/management.html',
@@ -29,6 +33,10 @@ dashboard.config(['$routeProvider',function ($routeProvider) {
     .when('/member/management/add', {
         templateUrl: '/static/views/member/add.html',
         controller: 'memberAdd'
+    })
+    .when('/member/management/modify', {
+        templateUrl: '/static/views/member/modify.html',
+        controller: 'memberModify'
     })
 
     .when('/commodity/management', {

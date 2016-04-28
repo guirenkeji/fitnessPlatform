@@ -11,7 +11,14 @@ dashboard.controller('userManagement', ['$scope', function($scope){
 dashboard.controller('userAdd', ['$scope', function($scope){
 
 	$scope.init = function () {
-		// App.init();
+		FormPlugins.init();
+	}
+}])
+
+dashboard.controller('userModify', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
 	}
 }])
 
@@ -27,7 +34,14 @@ dashboard.controller('personnelManagement', ['$scope', function($scope){
 dashboard.controller('personnelAdd', ['$scope', function($scope){
 
 	$scope.init = function () {
-		// App.init();
+		FormPlugins.init();
+	}
+}])
+
+dashboard.controller('personalModify', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
 	}
 }])
 
@@ -35,7 +49,7 @@ dashboard.controller('personnelAdd', ['$scope', function($scope){
 dashboard.controller('memberManagement', ['$scope', function($scope){
 
 	$scope.init = function () {
-		// App.init();
+		
 	}
 }])
 
@@ -43,7 +57,7 @@ dashboard.controller('memberManagement', ['$scope', function($scope){
 dashboard.controller('memberAdd', ['$scope', function($scope){
 
 	$scope.init = function () {
-		// App.init();
+		FormPlugins.init();
 	}
 
 	$scope.create = function () {
@@ -65,4 +79,11 @@ dashboard.controller('memberAdd', ['$scope', function($scope){
             }
         });
     }
+}])
+
+dashboard.controller('memberModify', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
+	}
 }])

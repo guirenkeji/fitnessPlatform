@@ -7,6 +7,10 @@ dashboard.controller('teamCoursesManagement', ['$scope', function($scope){
 }])
 
 dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http){
+    $scope.init = function () {
+        FormPlugins.init();
+    }
+    
     $scope.create = function () {
         var btn = $("#btnCreate");
         btn.button('loading');
@@ -35,6 +39,10 @@ dashboard.controller('privateCoursesManagement', ['$scope', function($scope){
 }])
 
 dashboard.controller('privateCoursesAdd', ['$scope','$http', function($scope,$http){
+    $scope.init = function () {
+        FormPlugins.init();
+    }
+
     $scope.create = function () {
         var btn = $("#btnCreate");
         btn.button('loading');
