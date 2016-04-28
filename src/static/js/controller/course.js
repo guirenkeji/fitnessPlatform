@@ -78,9 +78,9 @@ dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http)
 
 dashboard.controller('teamCoursesUpdate', ['$scope','$http', function($scope,$http){
 	$scope.Course = {};
-	$scope.Course.name = "test";
+	$scope.Course.Name = "test";
 	$scope.update = function () {
-        $http.post('/courses/team/management/add', $scope.Course,$http).success(function (result) {
+        $http.post('/courses/team/management/add', $scope.Course).success(function (result) {
         	if (result.created) {
                 alert("Success");
                 
