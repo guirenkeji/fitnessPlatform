@@ -48,6 +48,10 @@ dashboard.controller('teamCoursesManagement2', ['$scope', function($scope){
 }])
 
 dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http){
+    $scope.init = function () {
+        FormPlugins.init();
+    }
+
     $scope.create = function () {
         
         $scope.Course = {};

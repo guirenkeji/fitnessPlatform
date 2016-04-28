@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
+=======
+// 用户角色
+dashboard.controller('userManagement', ['$scope', function($scope){
+>>>>>>> b0a80d0e69c345520d0ecb597bf9a3f8d2fea532
 
 // 用户角色
 dashboard.controller('userManagement', ['$scope','$http', function($scope,$http){
@@ -56,6 +61,20 @@ dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
 }])
 
 
+dashboard.controller('userAdd', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
+	}
+}])
+
+dashboard.controller('userModify', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
+	}
+}])
+
 // 人事管理
 dashboard.controller('personnelManagement', ['$scope', '$http', '$route',function($scope,$http,$route){
 
@@ -97,6 +116,14 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route',functio
 dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
+		FormPlugins.init();
+	}
+}])
+
+dashboard.controller('personalModify', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
 		// App.init();
 		$scope.formdata = {};
 	}
@@ -125,7 +152,7 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
 dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-		// App.init();
+		FormPlugins.init();
 		$scope.formdata = {};
 	}
 
@@ -147,6 +174,13 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
              }
         });
     }
+}])
+
+dashboard.controller('memberModify', ['$scope', function($scope){
+
+	$scope.init = function () {
+		FormPlugins.init();
+	}
 }])
 
 dashboard.controller('memberManagement', ['$scope', '$http','$route', function($scope,$http,$route){
@@ -183,6 +217,59 @@ dashboard.controller('memberManagement', ['$scope', '$http','$route', function($
 			// App.init();
 	    }
 }])
+<<<<<<< HEAD
 
 
+=======
 
+// 用户角色
+dashboard.controller('userManagement', ['$scope', function($scope){
+>>>>>>> b0a80d0e69c345520d0ecb597bf9a3f8d2fea532
+
+	$scope.init = function () {
+		// App.init();
+	};
+	$scope.formData = {};
+	$scope.Delete = function () {
+        var btn = $("#btnDelete");
+        btn.button('loading');
+        $http.post('/Delete', { CourseId: $scope.Course.id }).success(function (result) {
+            if (result.deleted) {
+                $scope.DeleteSuccess = true;
+                btn.button('reset');
+                window.location.href = 'fitnessmanages#/courses/team/management';
+            }
+        });
+    }
+    $scope.update = function () {
+        var btn = $("#btnUpdate");
+        btn.button('loading');
+        $http.post('/Update', $scope.Course).success(function (result) {
+            if (result.updated) {
+                $scope.UpdateSuccess = true;
+                btn.button('reset');
+                window.location.href = 'fitnessmanages#/courses/team/management';
+            }
+        });
+    }
+    $scope.query = function () {
+        var btn = $("#btnQuery");
+        btn.button('loading');
+        $http.post('/query', $scope.Query).success(function (result) {
+            btn.button('reset');
+            $scope.Curse = result.data;
+            $scope.Query.RowCount = result.row_count;
+            $scope.Query.PageCount = result.page_count;
+            $scope.Query.PageNo = result.page_no;
+        });
+    }    
+
+}])
+
+
+dashboard.controller('userAdd', ['$scope', function($scope){
+
+	$scope.init = function () {
+		// App.init();
+	}
+}])

@@ -41,6 +41,10 @@ dashboard.controller('commodityManagement', ['$scope', function($scope){
 }])
 
 dashboard.controller('commodityAdd', ['$scope','$http', function($scope,$http){
+    $scope.init = function () {
+        FormPlugins.init();
+    }
+    
     $scope.create = function () {
         var btn = $("#btnCreate");
         btn.button('loading');
@@ -65,6 +69,7 @@ dashboard.controller('commodityRecord', ['$scope', function($scope){
     $scope.init = function () {
         // App.init();
     }
+
     $scope.Delete = function () {
         var btn = $("#btnDelete");
         btn.button('loading');
@@ -98,5 +103,4 @@ dashboard.controller('commodityRecord', ['$scope', function($scope){
             $scope.Query.PageNo = result.page_no;
         });
     }    
-
 }])

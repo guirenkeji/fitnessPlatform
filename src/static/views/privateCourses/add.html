@@ -1,4 +1,4 @@
-<div ng-controller="privateCoursesAdd">
+<div ng-controller="privateCoursesAdd" ng-init="init()">
 	<div class="col-md-12 ui-sortable">
         <!-- begin panel -->
         <div class="panel panel-inverse" data-sortable-id="form-validation-1">
@@ -80,9 +80,3 @@
         <!-- end panel -->
     </div>
 </div>
-
-<script>
-	$(document).ready(function() {
-		FormPlugins.init();
-	});
-</script>

@@ -57,6 +57,10 @@ dashboard.controller('teamCoursesManagement', ['$scope', '$http', function($scop
 }])
 
 dashboard.controller('teamCoursesAdd', ['$scope','$http', function($scope,$http){
+    $scope.init = function () {
+        FormPlugins.init();
+    }
+
     $scope.create = function () {
         var btn = $("#btnCreate");
         btn.button('loading');
