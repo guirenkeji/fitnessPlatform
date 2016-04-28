@@ -74,11 +74,11 @@ def employeeAdd(name,phone,webChat=None,birthday=None,address=None,password="cha
     employee.phone=phone
     employee.password=password
     if not webChat is None:
-        employee.webChat=webChat
+        employee.wchat=webChat
     if not birthday is None:
-        employee.phone=birthday
+        employee.birthday=birthday
     if not address is None:
-        employee.phone=address
+        employee.address=address
         
     for item in args:
         if hasattr(Employee, item):
