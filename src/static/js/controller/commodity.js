@@ -54,20 +54,22 @@ dashboard.controller('commodityAdd', ['$scope','$http', function($scope,$http){
     }
 }])
 //记录查询
-dashboard.controller('commodityRecord', ['$scope','$http',function($scope,$http){
+dashboard.controller('commodityRecord', ['$scope','$http','$route',function($scope,$http,$route){
 	$scope.Query = { PageNo: 1, role: ''};
     $scope.init = function () {
         // App.init();
     }
 
-    $scope.Delete = function () {
+    $scope.Delete = function (OrderId) {
         var btn = $("#btnDelete");
         btn.button('loading');
-        $http.post('/Delete', { CourseId: $scope.Course.id }).success(function (result) {
+        $http.post('/order/fitnessorder/delete', {'OrderId':OrderId}).success(function (result) {
             if (result.deleted) {
+            	       
                 $scope.DeleteSuccess = true;
                 btn.button('reset');
-                window.location.href = 'fitnessmanages#/courses/team/management';
+                $route.reload();
+//                window.location.href = 'fitnessmanages#/commodity/record';
             }
         });
     }

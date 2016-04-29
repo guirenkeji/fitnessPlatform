@@ -3,7 +3,7 @@ import json
 
 from flask import Module,render_template,jsonify, redirect, request,session,g
 from src.fitnessconfig import *
-from src.services import userservice,employeeservice,memberservice, orderservice
+from src.services import userservice,employeeservice,memberservice,orderservice
 from src.models.userprofile import UserStatus
 
 fitnessorder = Module(__name__)
@@ -31,3 +31,8 @@ def fitnessOrderQuery():
         
 #     password = request.json['Password']
     return jsonify(created=True,data = fitnessorderlist)
+@fitnessorder.route('/order/fitnessorder/delete',methods=['POST'])
+def fitnessOrderDelete():
+    OrderId = request.json['OrderId']
+    fitnessorderlist = orderservice.delete_fitnessorder(OrderId)
+    return jsonify(deleted=True)

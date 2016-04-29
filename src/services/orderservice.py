@@ -138,8 +138,16 @@ def query_fitnessorder():
     for i in fitnessorderlist:
         Price =i.Price
         Price = str(Price)
-        fitnessorder_list.append({'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
-    return fitnessorder_list      
+        fitnessorder_list.append({'OrderId':i.OrderId,'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
+    return fitnessorder_list
+
+def delete_fitnessorder(Order_Id):
+    session = database.get_session()
+    session.query(Order).filter(Order.OrderId == Order_Id).delete()
+    session.commit()
+    session.close()
+    return True
+      
 # def update_goods(GoodsId,Name,Price,DefaultRebate=100,updater):
 #     session = database.get_session()
 #     session.query(Goods).filter(Goods.GoodsId == GoodsId).update( {'Name':Name.strip(),'Price':Price,'Modifier':updater,
