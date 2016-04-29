@@ -7,6 +7,8 @@ Created on 2016年4月21日
 '''
 from src.models import database,Course,Plan,Member,Yard,Order,Goods
 from datetime import datetime
+# from decimal import Decimal
+# import json
 
 
 def confirm_order(OrderId):#确认订单  PayStatus=1的订单为交易完成的订单  只有PayStatus=3即待确认的订单有次操作
@@ -134,7 +136,9 @@ def query_fitnessorder():
     session.close()
     fitnessorder_list = []
     for i in fitnessorderlist:
-        fitnessorder_list.append({'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':i.Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
+        Price =i.Price
+        Price = str(Price)
+        fitnessorder_list.append({'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
     return fitnessorder_list      
 # def update_goods(GoodsId,Name,Price,DefaultRebate=100,updater):
 #     session = database.get_session()

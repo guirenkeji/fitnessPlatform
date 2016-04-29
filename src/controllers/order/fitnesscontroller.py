@@ -21,9 +21,13 @@ def fitnessOrderAdd():
     fitnessorderlist = orderservice.create_fitnessorder(OrderName,OrderType, Price,Amount, BuyName, BuyerName, Comment)
 #     password = request.json['Password']
     return jsonify(created=True,data = fitnessorderlist)
-@fitnessorder.route('/order/fitnessorder/qurey',methods=['POST'])
+@fitnessorder.route('/order/fitnessorder/query',methods=['POST'])
 def fitnessOrderQuery():
-
+    PageNo = request.json['PageNo']
     fitnessorderlist = orderservice.query_fitnessorder()
+#     print type(fitnessorderlist)
+#     for i in fitnessorderlist:
+#         print i
+        
 #     password = request.json['Password']
     return jsonify(created=True,data = fitnessorderlist)

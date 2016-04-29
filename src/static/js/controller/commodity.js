@@ -48,7 +48,6 @@ dashboard.controller('commodityAdd', ['$scope','$http', function($scope,$http){
     $scope.create = function () {
         $http.post('/order/fitnessorder/add', $scope.order).success(function (result) {
         	if (result.created) {
-                alert("Success");
                 window.location.href = 'fitnessmanages#/commodity/record'
             }
         });
