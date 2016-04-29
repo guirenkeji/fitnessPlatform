@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <style type="text/css">
 	td {
 		vertical-align: middle!important;
@@ -50,6 +50,7 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="member in memberlist">
+								    <td style="display: None">{{member.id}}</td>
 									<td>{{$index + 1}}</td>
 									<td>{{member.name}}</td>
 									<td>{{member.card}}</td>
@@ -59,7 +60,9 @@
 									<td>{{member.status}}</td>
 									<td>
 										<button type="button" class="btn btn-info btn-sm m-r-5 m-b-5">详情</button>
-										<button type="button" class="btn btn-primary btn-sm m-r-5 m-b-5">修改</button>
+										<a href="#/member/management/modify">
+											<button type="button" class="btn btn-primary btn-sm m-r-5 m-b-5">修改</button>
+										</a>
 										<button type="button" class="btn btn-danger btn-sm m-r-5 m-b-5">删除</button>
 									</td>
 								</tr>
@@ -81,89 +84,5 @@
 			TableManageDefault.init();
 		}, 200)
 	});
-=======
-<style type="text/css">
-	td {
-		vertical-align: middle!important;
-	}
-</style>
-<div ng-controller="memberManagement">
-	<div class="col-12">
-		<form class="user-management-search">
-	        <div class="input-group m-b-15">
-	            <input type="text" class="form-control input-sm input-white" placeholder="Search">
-	            <span class="input-group-btn">
-	                <button class="btn btn-sm btn-inverse" type="button"><i class="fa fa-search"></i></button>
-	            </span>
-	        </div>
-	    </form>
-		<div class="email-btn-row hidden-xs">
-	        <a href="#/member/management/add" class="btn btn-sm btn-inverse"><i class="fa fa-plus m-r-5"></i> 添加</a>
-	    </div>
-    </div>
-	<!-- begin row -->
-	<div class="row">
-	    <!-- begin col-12 -->
-	    <div class="col-md-12">
-	        <!-- begin panel -->
-            <div class="panel panel-inverse" data-sortable-id="table-basic-7">
-                <div class="panel-heading">
-                    <div class="panel-heading-btn">
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                    </div>
-                    <h4 class="panel-title">人员列表</h4>
-                </div>
-                <div class="panel-body">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>姓名</th>
-									<th>电话</th>
-									<th>会员类型</th>
-									<th>教练</th>
-									<th>状态</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="member in memberlist">
-								    <td style="display: None">{{member.id}}</td>
-									<td>{{$index + 1}}</td>
-									<td>{{member.name}}</td>
-									<td>{{member.phone}}</td>
-									<td>{{member.type}}</td>
-									<td>{{member.coach_name}}</td>
-									<td>{{member.status}}</td>
-									<td>
-										<button type="button" class="btn btn-info btn-sm m-r-5 m-b-5">详情</button>
-										<a href="#/member/management/modify">
-											<button type="button" class="btn btn-primary btn-sm m-r-5 m-b-5">修改</button>
-										</a>
-										<button ng-click="Delete(member.id)"type="button" class="btn btn-danger btn-sm m-r-5 m-b-5">删除</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-            <!-- end panel -->
-	    </div>
-	    <!-- end col-12 -->
-	</div>
-	<!-- end row -->
-</div>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		setTimeout(function() {
-			TableManageDefault.init();
-		}, 200)
-	});
->>>>>>> branch 'master' of https://github.com/guirenkeji/fitnessPlatform.git
 </script>
