@@ -102,11 +102,30 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route',functio
 }])
 
 
-dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
+dashboard.controller('personalAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-		FormPlugins.init();
+//		FormPlugins.init();
 	}
+	
+	$scope.create = function () {
+        
+		 var btn = $("#btnCreate");
+	     btn.button('loading');
+	        
+       $http({
+         method  : 'POST',
+         url     : '/fitnessmanages/addEmployee',
+         data    : $scope.formdata, 
+         headers : {'Content-Type': 'application/json'} 
+        }).success(function (result) {
+       	 if (result.created) {
+                $scope.AddSuccess = true;
+                btn.button('reset');
+                window.location.href = "fitnessmanages#/personnel/management";
+            }
+       });
+   }
 }])
 
 dashboard.controller('personalModify', ['$scope', function($scope){
@@ -130,7 +149,7 @@ dashboard.controller('personalModify', ['$scope', function($scope){
          }).success(function (result) {
         	 if (result.created) {
                  $scope.AddSuccess = true;
-                 btn.button('reset');
+                 $route.reload();
                  window.location.href = "fitnessmanages#/personnel/management";
              }
         });
@@ -141,7 +160,7 @@ dashboard.controller('personalModify', ['$scope', function($scope){
 dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-		FormPlugins.init();
+//		FormPlugins.init();
 		$scope.formdata = {};
 	}
 
@@ -159,6 +178,7 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
         	 if (result.created) {
                  $scope.AddSuccess = true;
                  btn.button('reset');
+                 $route.reload();
                  window.location.href = "fitnessmanages#/member/management";
              }
         });
