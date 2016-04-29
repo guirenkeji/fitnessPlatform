@@ -8,5 +8,6 @@ from src.controllers.coursecontroller import course
 from src.controllers.employeecontroller import employeemanages
 from src.controllers.membercontroller import memberManages
 from src.controllers.rolecontroller import role
+from src.controllers.order import fitnessorder
 
 

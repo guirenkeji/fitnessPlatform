@@ -3,7 +3,7 @@
 		vertical-align: middle!important;
 	}
 </style>
-<div ng-controller="commodityRecord">
+<div ng-controller="commodityRecord" ng-init="query()">
 	<!-- begin row -->
 	<div class="row">
 	    <!-- begin col-12 -->
@@ -34,14 +34,14 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr ng-repeat="order in OrderList">
 									<td>1</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
-									<td>Table cell</td>
+									<td>{{order.OrderName}}</td>
+									<td>{{order.OrderType}}</td>
+									<td>{{order.Price}}</td>
+									<td>{{order.Amount}}</td>
+									<td>{{order.buyname}}</td>
+									<td>{{order.buyername}}</td>
 								</tr>
 							</tbody>
 						</table>

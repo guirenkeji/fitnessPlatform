@@ -54,11 +54,11 @@ class Order(BaseModel):
     __tablename__ = 'Order'
     OrderId = Column('OrderId', Integer,primary_key=True,nullable=False,autoincrement=True) #订单序号
     OrderName = Column('OrderName', NVARCHAR(100),nullable = False) #商品名
-    OrderType = Column('OrderType', Integer,nullable=False) #商品类型  
+#     OrderType = Column('OrderType', Integer,nullable=False) #商品类型  
 #     Member = relationship('Member') #会员
     PayMode = Column('PayMode', Integer,nullable=False) #支付方式    
     PayStatus = Column('PayStatus', Integer,nullable=False) #支付状态
-    OrderType = Column('OrderType', Integer,nullable=False) #订单类型
+    OrderType = Column('OrderType', NVARCHAR(100),nullable = False) #订单类型
 #     Goods = relationship('Goods') #商品
 #     Course = relationship('Course') #课程
     Price = Column('Price', DECIMAL(10, 2),nullable=False) #价格

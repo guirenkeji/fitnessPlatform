@@ -2,7 +2,7 @@
 
 from flask import Flask
 from src.controllers import *
-from src.controllers.order import *
+# from src.controllers.order import fitnessorder
 
 def create_fitnessPlatform_app():
     app = Flask(__name__)
