@@ -17,7 +17,7 @@
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
-                    <h4 class="panel-title">商品记录列表</h4>
+                    <h4 class="panel-title">商品订单记录列表</h4>
                 </div>
                 <div class="panel-body">
 					<div class="table-responsive">
@@ -25,7 +25,7 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>商品名</th>
+									<th>商品订单名</th>
 									<th>类型</th>
 									<th>价格</th>
 									<th>课程数</th>
@@ -42,8 +42,8 @@
 									<td>{{order.Amount}}</td>
 									<td>{{order.BuyName}}</td>
 									<td>{{order.BuyerName}}</td>
-									<td>
-									<button type="button" class="btn btn-danger btn-sm m-r-5 m-b-5">删除</button>
+									<td>  
+									<button type="button" class="btn btn-danger btn-sm m-r-5 m-b-5" ng-click="Delete(order.OrderId)">删除</button>
 									</td>
 								</tr>
 							</tbody>
