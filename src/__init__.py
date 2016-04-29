@@ -2,6 +2,7 @@
 
 from flask import Flask
 from src.controllers import *
+from src.controllers.order import *
 
 def create_fitnessPlatform_app():
     app = Flask(__name__)
@@ -15,4 +16,5 @@ def create_fitnessPlatform_app():
     app.register_module(employeemanages)
     app.register_module(memberManages)
     app.register_module(role)
+    app.register_module(fitnessorder)
     return app

@@ -6,7 +6,7 @@ Created on 2016年4月17日
 @module: src.models.order
 '''
 from src.models.database import BaseModel
-from sqlalchemy import Column,VARCHAR,Integer,DateTime,UnicodeText,ForeignKey,DECIMAL
+from sqlalchemy import Column,VARCHAR,Integer,DateTime,UnicodeText,ForeignKey,DECIMAL,NVARCHAR
 from sqlalchemy.orm import relationship
 
     
@@ -46,23 +46,44 @@ class OrderType:
     Member = 1    #会员
     Activity = 2    #活动
     Bang = 3    #多人
-    
+    Food = 4 # 食品
+    Fitness = 5 #健身
     
 class Order(BaseModel):
 
     __tablename__ = 'Order'
     OrderId = Column('OrderId', Integer,primary_key=True,nullable=False,autoincrement=True) #订单序号
+    OrderName = Column('OrderName', NVARCHAR(100),nullable = False) #商品名
+    OrderType = Column('OrderType', Integer,nullable=False) #商品类型  
 #     Member = relationship('Member') #会员
     PayMode = Column('PayMode', Integer,nullable=False) #支付方式    
     PayStatus = Column('PayStatus', Integer,nullable=False) #支付状态
     OrderType = Column('OrderType', Integer,nullable=False) #订单类型
 #     Goods = relationship('Goods') #商品
 #     Course = relationship('Course') #课程
+    Price = Column('Price', DECIMAL(10, 2),nullable=False) #价格
     Amount = Column('Amount', Integer,default=1) #数量
     Rebate = Column('Rebate', Integer,default=100) #实际折扣 
-    Comment = Column('Comment', VARCHAR(100)) #备注
+    BuyName = Column('BuyName', NVARCHAR(100),nullable = False) #会员 /学员
+    BuyerName = Column('BuyerName', NVARCHAR(100),nullable = False) #挂账人员 
+    Comment = Column('Comment', VARCHAR(500)) #备注
     Operator = Column('Operator', Integer,ForeignKey('UserProfile.UserId'),nullable = False)
     CreateDate = Column('CreateDate', DateTime,nullable=False)
 
-    
+# class FitnessOrder(BaseModel):
+# 
+#     __tablename__ = 'FitnessOrder'
+#     FitnessOrderId = Column('FitnessOrderId', Integer,primary_key=True,nullable=False,autoincrement=True) #订单序号
+# #     Member = relationship('Member') #会员
+#     FitnessOrderName = Column('FitnessOrderName', Integer,nullable=False) #支付方式  
+#     PayMode = Column('PayMode', Integer,nullable=False) #支付方式    
+#     PayStatus = Column('PayStatus', Integer,nullable=False) #支付状态
+#     OrderType = Column('OrderType', Integer,nullable=False) #订单类型
+# #     Goods = relationship('Goods') #商品
+# #     Course = relationship('Course') #课程
+#     Amount = Column('Amount', Integer,default=1) #数量
+#     Rebate = Column('Rebate', Integer,default=100) #实际折扣 
+#     Comment = Column('Comment', VARCHAR(100)) #备注
+#     Operator = Column('Operator', Integer,ForeignKey('UserProfile.UserId'),nullable = False)
+#     CreateDate = Column('CreateDate', DateTime,nullable=False)
     

@@ -69,27 +69,32 @@ def confirm_and_refund_order(OrderId):#确认并退款  只有PayStatus=7的订�
     session.close()
     return True
 
-def create_order(PayMode,OrderType,Comment,creator,Member_id,Goods_id=None,Course_id=None,Amount=1,Rebate=100,PayStatus=4):
+def create_fitnessorder(OrderName,OrderType, Price,Amount, BuyName, BuyerName, Comment):
     session = database.get_session()
     o = Order()
-    o.PayMode = PayMode.strip()
+    o.OrderName = OrderName.strip()
+#     o.PayMode = PayMode.strip()
     o.OrderType = OrderType.strip()
-    if Member_id:
-        m = Member()
-        m.UserId = Member_id
-        o.Member.append(m)
-    if Goods_id:
-        g = Goods()
-        g.GoodsId = Goods_id
-        o.Goods.append(g)
-    if Course_id:
-        c = Course()
-        c.Course = Course_id
-        o.Course.append(c)
+#     先注释商品和教练关联
+#     if Member_id:
+#         m = Member()
+#         m.UserId = Member_id
+#         o.Member.append(m)
+#         
+#     if Goods_id:
+#         g = Goods()
+#         g.GoodsId = Goods_id
+#         o.Goods.append(g)
+#     if Course_id:
+#         c = Course()
+#         c.Course = Course_id
+#         o.Course.append(c)
     o.Amount = int(Amount)
-    o.Rebate = int(Rebate)
+    o.Price = Price
+    o.BuyName = BuyName
+    o.BuyerName = BuyerName
     o.Comment = Comment.strip()
-    o.Operator = creator
+#     o.Operator = creator
     o.CreateDate = datetime.now()
     session.add(o)
     session.commit()
@@ -116,7 +121,14 @@ def query_order(page_no,page_size,order_by,current_user,PayMode=0,OrderType=0,Pa
     (data,row_count,page_count,page_no) = database.query_more(subdata,order_by,page_no,page_size)
     session.close()
     return (data,subdata_list,row_count,page_count,page_no)
-        
+def query_fitnessorder():
+    session = database.get_session()
+    fitnessorderlist = session.query(Order).all()
+    session.close()
+    fitnessorder_list = []
+    for i in fitnessorderlist:
+        fitnessorder_list.append({'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':i.Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
+    return fitnessorder_list      
 def update_goods(GoodsId,Name,Price,DefaultRebate=100,updater):
     session = database.get_session()
     session.query(Goods).filter(Goods.GoodsId == GoodsId).update( {'Name':Name.strip(),'Price':Price,'Modifier':updater,
