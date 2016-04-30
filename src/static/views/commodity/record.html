@@ -5,6 +5,16 @@
 </style>
 <div ng-controller="commodityRecord" ng-init="query()">
 	<!-- begin row -->
+	<div class="col-12">
+		<form class="user-management-search">
+	        <div class="input-group m-b-15" >
+	            <input type="text" name="search" ng-model="searchname"  class="form-control input-sm input-white"  placeholder="Search">
+	            <span class="input-group-btn">
+	                <button class="btn btn-sm btn-inverse" type="button" ng-click="search()" ><i class="fa fa-search"></i></button>
+	            </span>
+	        </div>
+	    </form>
+    </div>
 	<div class="row">
 	    <!-- begin col-12 -->
 	    <div class="col-md-12">

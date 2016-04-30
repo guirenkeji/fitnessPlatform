@@ -141,6 +141,18 @@ def query_fitnessorder():
         fitnessorder_list.append({'OrderId':i.OrderId,'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
     return fitnessorder_list
 
+def search_fitnessorder(searchName):
+    session = database.get_session()
+    
+#     fitnessorderlist = session.query(Order).filter(Order.BuyerName == searchName).all()
+    fitnessorderlist = session.query(Order).filter(Order.BuyerName.like('%' + searchName + '%')).all()
+    session.close()
+    fitnessorder_list = []
+    for i in fitnessorderlist:
+        Price =i.Price
+        Price = str(Price)
+        fitnessorder_list.append({'OrderId':i.OrderId,'OrderName':i.OrderName,'OrderType':i.OrderType,'Amount':i.Amount,'Price':Price,'BuyName':i.BuyName,'BuyerName':i.BuyerName,'Comment':i.Comment})   
+    return fitnessorder_list
 def delete_fitnessorder(Order_Id):
     session = database.get_session()
     session.query(Order).filter(Order.OrderId == Order_Id).delete()
