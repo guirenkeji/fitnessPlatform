@@ -178,7 +178,7 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
         	 if (result.created) {
                  $scope.AddSuccess = true;
                  btn.button('reset');
-                 $route.reload();
+//                 $route.reload();
                  window.location.href = "fitnessmanages#/member/management";
              }
         });

@@ -41,6 +41,7 @@
 									<th>课程数</th>
 									<th>学员</th>
 									<th>挂账人员</th>
+									<th>备注</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -52,6 +53,7 @@
 									<td>{{order.Amount}}</td>
 									<td>{{order.BuyName}}</td>
 									<td>{{order.BuyerName}}</td>
+									<td>{{order.Comment}}</td>
 									<td>  
 									<button type="button" class="btn btn-danger btn-sm m-r-5 m-b-5" ng-click="Delete(order.OrderId)">删除</button>
 									</td>

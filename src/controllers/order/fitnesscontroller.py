@@ -15,7 +15,8 @@ def fitnessOrderAdd():
     OrderType = u"课程"
     Amount = request.json['courseAmount']
     Price = request.json['Price']
-    BuyName = request.json['BuyName']
+    BuyName = u"会员"
+#     BuyName = request.json['BuyName']
     BuyerName = request.json['BuyerName']
     Comment = request.json['Comment']
     fitnessorderlist = orderservice.create_fitnessorder(OrderName,OrderType, Price,Amount, BuyName, BuyerName, Comment)
