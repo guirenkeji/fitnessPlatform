@@ -1,19 +1,18 @@
 // 用户角色
-dashboard.controller('userManagement', ['$scope','$http', function($scope,$http){
+dashboard.controller('userManagement', ['$scope','$http', '$route',function($scope,$http,$route){
 //	$scpoe.query();
 	$scope.Query = { PageNo: 1, role: ''};
 	$scope.init = function () {
 		// App.init();
 	};
 	$scope.formData = {};
-	$scope.Delete = function () {
+	$scope.Delete = function (roleID) {
         var btn = $("#btnDelete");
         btn.button('loading');
-        $http.post('/Delete', { CourseId: $scope.Course.id }).success(function (result) {
+        $http.post('/role/delete', { roleID: roleID }).success(function (result) {
             if (result.deleted) {
                 $scope.DeleteSuccess = true;
-                btn.button('reset');
-                window.location.href = 'fitnessmanages#/courses/team/management';
+                $route.reload();
             }
         });
     }
@@ -43,9 +42,8 @@ dashboard.controller('userManagement', ['$scope','$http', function($scope,$http)
 dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
 
     $scope.create = function () {
-        $http.post('/role/add', $scope.role).success(function (result) {
+        $http.post('/role/add', $scope.formData).success(function (result) {
         	if (result.created) {
-                alert("Success");
                 window.location.href = 'fitnessmanages#/user/management'
             }
         });

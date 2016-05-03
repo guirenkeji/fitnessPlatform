@@ -7,6 +7,17 @@ Created on Apr 24, 2016
 from src.models.role import Role,Permission
 from src.models import database
  
+def roleDeleteByID(roleID):
+    """
+    Query member by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
+    """
+    seesion=database.get_session()
+    querys=seesion.query(Role).filter(Role.id==roleID)
+    role=querys.first()
+    
+    seesion.delete(role)
+    seesion.commit()
+    seesion.close()
 
 def createRole(roles):
     """
@@ -25,10 +36,12 @@ def createRole(roles):
         seesion.commit()
     seesion.close()
     
-def createRoleAdd(rolename):
+def createRoleAdd(rolename,taozhang,comments):
     r = Role()
     seesion=database.get_session()
     r.name = rolename.strip()
+    r.taozhang=taozhang
+    r.comments=comments
 
     seesion.add(r)
 

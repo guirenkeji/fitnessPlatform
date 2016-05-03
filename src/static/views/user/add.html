@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">角色 * :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="fullname" name="fullname" ng-model=role.name placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
+							<input class="form-control" ng-model='formData.rolename' type="text" id="fullname" name="fullname" ng-model=role.name placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
 						</div>
 					</div>
 		
@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="message"> 所属帐套:</label>
 						<div class="col-md-6 col-sm-6">
-							<select class="form-control">
+							<select ng-model='formData.taozhang' class="form-control">
                                 <option value="" selected="">请选择</option>
                                 <option value="AF">诸暨</option>
                                 <option value="AL">杭州</option>
@@ -50,7 +50,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="message">备注 :</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929"></textarea>
+							<textarea class="form-control" ng-model='formData.comments' id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929"></textarea>
 							<ul class="parsley-errors-list" id="parsley-id-8929"></ul>
 						</div>
 					</div>

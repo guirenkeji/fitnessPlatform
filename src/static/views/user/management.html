@@ -47,18 +47,16 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="role in RoleList">
-									<td>{{role.id}}</td>
+								    <td>{{$index + 1}}</td>
 									<td>{{role.rolename}}</td>
-									<td>管理员</td>
-									<td>诸暨</td>
-									
-							
+									<td>{{role.permission}}</td>
+									<td>{{role.taozhang}}</td>
 									<td>
 										<button type="button" class="btn btn-info btn-sm m-r-5 m-b-5">详情</button>
 											<a href="#/user/management/modify">
 											<button type="button" class="btn btn-primary btn-sm m-r-5 m-b-5">修改</button>
 										</a>
-										<button type="button" class="btn btn-danger btn-sm m-r-5 m-b-5">删除</button>
+										<button ng-click="Delete(role.id)" type="button" class="btn btn-danger btn-sm m-r-5 m-b-5">删除</button>
 									</td>
 								</tr>
 							</tbody>

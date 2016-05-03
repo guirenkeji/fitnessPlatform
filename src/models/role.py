@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*- 
 '''
 Created on Apr 24, 2016
 
@@ -30,7 +31,9 @@ class Role(BaseModel):
     id = Column(Integer, primary_key=True)
     name = Column(String(164))
     
-    permissions = Column(Integer)
+    permissions = Column(Integer,default=Permission.NO_PERMISSION)
+    taozhang=Column(String(10),default='杭州')
+    comments=Column(String(200))
     
 
    
