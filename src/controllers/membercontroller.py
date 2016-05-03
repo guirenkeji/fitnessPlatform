@@ -52,10 +52,15 @@ def searchMember():
     for member in members:
         coach=employeeservice.employeeGetByID(member.coach_id)
         if coach is None:
-            coach=''
+            coach='宗教练'
         else:
             coach = coach.name
-        results.append({'id':member.id,'name':member.name,'phone':member.phone,'coach_name':coach,'type':member.type,'status':'ready'})
+        type= member.type
+        if type != 'vip':
+            type='普通'
+        else:
+            type = 'VIP'
+        results.append({'id':member.id,'card':'%05d'%(member.id),'name':member.name,'phone':member.phone,'coach_name':coach,'type':type,'status':'ready'})
     
     return jsonify(data=results,row_count=10,page_count=1,page_no=request.json['PageNo'])
 

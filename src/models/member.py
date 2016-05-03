@@ -21,7 +21,7 @@ class Member(BaseModel):
     name = Column(String(50),nullable=False)
     phone = Column(String(11),nullable=False)
     wchat = Column(String(30))
-    type=Column(Enum('vip','normal'))
+    type=Column(Enum('vip','normal'),default='normal')
     sex=Column(Enum('men','women'))
     birthday = Column(Date())
     expenses_not_quota_password= Column(String(20),nullable=False)
