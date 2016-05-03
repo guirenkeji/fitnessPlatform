@@ -15,7 +15,8 @@ def fitnessOrderAdd():
     OrderType = u"课程"
     Amount = request.json['courseAmount']
     Price = request.json['Price']
-    BuyName = request.json['BuyName']
+    BuyName = u"会员"
+#     BuyName = request.json['BuyName']
     BuyerName = request.json['BuyerName']
     Comment = request.json['Comment']
     fitnessorderlist = orderservice.create_fitnessorder(OrderName,OrderType, Price,Amount, BuyName, BuyerName, Comment)
@@ -25,12 +26,12 @@ def fitnessOrderAdd():
 def fitnessOrderQuery():
     PageNo = request.json['PageNo']
     fitnessorderlist = orderservice.query_fitnessorder()
-#     print type(fitnessorderlist)
-#     for i in fitnessorderlist:
-#         print i
-        
-#     password = request.json['Password']
     return jsonify(created=True,data = fitnessorderlist)
+@fitnessorder.route('/order/fitnessorder/search',methods=['POST'])
+def fitnessOrderSearch():
+    searchName = request.json['searchname']
+    fitnessorderlist2 = orderservice.search_fitnessorder(searchName)
+    return jsonify(created=True,data = fitnessorderlist2)
 @fitnessorder.route('/order/fitnessorder/delete',methods=['POST'])
 def fitnessOrderDelete():
     OrderId = request.json['OrderId']

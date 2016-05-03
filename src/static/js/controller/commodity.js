@@ -36,7 +36,7 @@ dashboard.controller('commodityManagement', ['$scope', function($scope){
             $scope.Query.PageCount = result.page_count;
             $scope.Query.PageNo = result.page_no;
         });
-    }    
+    }  
 
 }])
 
@@ -93,5 +93,14 @@ dashboard.controller('commodityRecord', ['$scope','$http','$route',function($sco
           
          
         });
-    }    
+    }   
+    $scope.search = function () {
+        var btn = $("#btnSearch");
+        btn.button('loading');
+        $http.post('/order/fitnessorder/search',  {"searchname":$scope.searchname}).success(function (result) {
+            btn.button('reset');
+            $scope.OrderList = result.data;
+
+        });
+    }   
 }])
