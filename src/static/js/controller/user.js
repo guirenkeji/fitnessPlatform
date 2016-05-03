@@ -178,17 +178,17 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
         	 if (result.created) {
                  $scope.AddSuccess = true;
                  btn.button('reset');
-                 $route.reload();
                  window.location.href = "fitnessmanages#/member/management";
              }
         });
     }
 }])
 
-dashboard.controller('memberModify', ['$scope', function($scope){
+dashboard.controller('memberModify',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-		FormPlugins.init();
+//		FormPlugins.init();
+		$scope.formdata = {};
 	}
 }])
 
