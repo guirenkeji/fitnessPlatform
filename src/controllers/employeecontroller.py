@@ -30,12 +30,12 @@ def addNewEmployee():
     return jsonify(created=True)
 
 
-@employeemanages.route('/fitnessmanages/modifyEmployee',methods=["GET"])
+@employeemanages.route('/fitnessmanages/modifyEmployee',methods=["POST"])
 def modifyEmployee():
-    argDict=request.args.to_dict()
+    argDict=request.json.to_dict()
     employeeservice.employeeModify(argDict.pop('id'),**argDict)
     
-    return redirect('/fitnessmanages?fullname=&message=#/personnel/management/add')  
+    return jsonify(modified=True) 
 
 
 @employeemanages.route('/fitnessmanages/searchEmployee',methods=["POST"])
@@ -63,7 +63,7 @@ def deleteEmployeeByID():
     
     return jsonify(deleted=True)
 
-@employeemanages.route('/fitnessmanages/getEmployee')
+@employeemanages.route('/fitnessmanages/getEmployee',methods=["POST"])
 def getEmployeeByID():
     eid = request.args.get('id')
     employ=employeeservice.employeeGetByID(eid)
@@ -73,5 +73,5 @@ def getEmployeeByID():
             info[key]=employ.__dict__[key]
                 
 
-    return json.dumps(info, default=date_handler)
+    jsonify(data=info)
 

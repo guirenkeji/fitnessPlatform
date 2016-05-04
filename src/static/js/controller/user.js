@@ -62,6 +62,24 @@ dashboard.controller('userModify', ['$scope', function($scope){
 }])
 
 // 人事管理
+dashboard.service('selectEmployeeID', function() {
+    var stringValue = '';
+    var objectValue = {
+        data: ''
+    };
+    
+    return {
+        getString: function() {
+            return stringValue;
+        },
+        setString: function(value) {
+            stringValue = value;
+        },
+        getObject: function() {
+            return objectValue;
+        }
+    }
+});
 dashboard.controller('personnelManagement', ['$scope', '$http', '$route',function($scope,$http,$route){
 
 	$scope.init = function () {
@@ -125,28 +143,35 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
    }
 }])
 
-dashboard.controller('personnelModify', ['$scope', function($scope){
+dashboard.controller('personnelModify', ,['$scope','$http', function($scope,$http,selectEmployeeID){
 
 	$scope.init = function () {
 		FormPlugins.init();
 		// App.init();
 		$scope.formdata = {};
+		http.post('/fitnessmanages/getEmployee', { id: selectEmployeeID.getString() }).success(function (result) {
+            if (result.modified) {
+                btn.button('reset');
+//                window.location.href = 'fitnessmanages#/memeber/management';
+//                $route.reload();
+                $scope.formdata=data
+            }
+        });
 	}
 
-	$scope.create = function () {
+	$scope.modify = function () {
         
 		 var btn = $("#btnCreate");
 	     btn.button('loading');
 	        
         $http({
           method  : 'POST',
-          url     : '/fitnessmanages/addEmployee',
+          url     : '/fitnessmanages/modifyEmployee',
           data    : $scope.formdata, 
           headers : {'Content-Type': 'application/json'} 
          }).success(function (result) {
         	 if (result.created) {
                  $scope.AddSuccess = true;
-                 $route.reload();
                  window.location.href = "fitnessmanages#/personnel/management";
              }
         });
