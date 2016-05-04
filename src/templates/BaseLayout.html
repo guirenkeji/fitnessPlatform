@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
-<html ng-app="dashboard" lang="en">
+<html ng-app="dashboard" lang="zh-CN">
 <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <title>Color Admin | Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Guiren Admin | Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -34,6 +34,8 @@
     <link href="/static/assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
     <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 
+	<link href="/static/assets/plugins/DataTables/css/data-table.css" rel="stylesheet">
+
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/static/assets/plugins/pace/pace.min.js"></script>
     <!-- ================== END BASE JS ================== -->
@@ -41,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/comm.css">
     {% block header %}{% endblock %}
 </head>
-<body style="height:90%; background-color: #F5F5F5;">
+<body style="height:90%; background-color: #F5F5F5;" ng-app="dashboard">
     {% block content %}{% endblock %}
     	
 	<!-- ================== BEGIN BASE JS ================== -->
@@ -72,17 +74,28 @@
 	<script src="/static/assets/js/apps.min.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 
+	<script src="/static/assets/plugins/DataTables/js/jquery.dataTables.js"></script>
+	<script src="/static/assets/js/table-manage-default.demo.min.js"></script>
+	<script src="/static/assets/plugins/parsley/dist/parsley.js"></script>
+	<script src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/static/assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+	<script src="/static/assets/js/form-plugins.demo.min.js"></script>
+	
 	<script type="text/javascript" src="/static/js/angular.min.js"></script>
-	<script src="//cdn.bootcss.com/angular.js/1.5.0/angular-route.min.js"></script>
+	<script type="text/javascript" src="/static/js/angular-route.min.js"></script>
 	<script type="text/javascript" src="/static/js/app.js"></script>
 	<script type="text/javascript" src="/static/js/route.js"></script>
 	<script type="text/javascript" src="/static/js/controller.js"></script>
+	<script type="text/javascript" src="/static/js/controller/user.js"></script>
+	<script type="text/javascript" src="/static/js/controller/course.js"></script>
+	<script type="text/javascript" src="/static/js/controller/commodity.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			setTimeout(function() {
 				App.init();
 				// Dashboard.init();
-			}, 200)			
+				// TableManageDefault.init();
+			}, 200)
 		});
 	</script>
 </body>

@@ -1,4 +1,4 @@
-<div ng-controller="userAdd">
+<div ng-controller="userAdd" ng-init="init()">
 	<div class="col-md-12 ui-sortable">
         <!-- begin panel -->
         <div class="panel panel-inverse" data-sortable-id="form-validation-1">
@@ -24,16 +24,14 @@
 			         <div class="form-group">
 						<label class="control-label col-md-4 col-sm-4"> 授权列表 :</label>
 						<div class="col-md-6 col-sm-6">
-							<div class="radio">
-								<label>
-									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" /> 用户管理 1
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="radiorequired" id="radio-required2" value="bar" /> 商品列表 2
-								</label>
-							</div>
+							<label class="checkbox-inline">
+                                <input type="checkbox" value="">
+                                用户1
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="">
+                                用户2
+                            </label>
 						</div>
 					</div>
 					<div class="form-group">
