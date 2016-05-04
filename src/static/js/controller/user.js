@@ -146,7 +146,7 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
    }
 }])
 
-dashboard.controller('personnelModify', ,['$scope','$http', function($scope,$http,selectEmployeeID){
+dashboard.controller('personnelModify',['$scope','$http', function($scope,$http,selectEmployeeID){
 
 	$scope.init = function () {
 		FormPlugins.init();
