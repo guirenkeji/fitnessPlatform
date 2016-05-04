@@ -7,6 +7,10 @@ dashboard.run(['$rootScope', '$location', function($rootScope, $location) {
         var path = $location.path().replace('/', '');
         console.log($rootScope.path);
         $rootScope.rootpath = path.slice(0, path.indexOf('/'));
+        setTimeout(function () {
+			// App.init();
+			TableManageDefault.init();
+		}, 200)
     });
 
 }]);

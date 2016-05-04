@@ -40,7 +40,10 @@ dashboard.controller('userManagement', ['$scope','$http', '$route',function($sco
 }])
 
 dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
-
+	$scope.init = function () {
+		// FormPlugins.init();
+	}
+	
     $scope.create = function () {
         $http.post('/role/add', $scope.formData).success(function (result) {
         	if (result.created) {
@@ -120,7 +123,7 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route',functio
 dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-//		FormPlugins.init();
+		FormPlugins.init();
 	}
 	
 	$scope.create = function () {
