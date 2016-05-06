@@ -7,9 +7,9 @@
 	<div class="col-12">
 		<form class="user-management-search">
 	        <div class="input-group m-b-15">
-	            <input type="text" class="form-control input-sm input-white" placeholder="Search">
+	            <input ng-model="searchKey" type="text" class="form-control input-sm input-white" placeholder="Search">
 	            <span class="input-group-btn">
-	                <button class="btn btn-sm btn-inverse" type="button"><i class="fa fa-search"></i></button>
+	                <button ng-click="search(searchKey)" class="btn btn-sm btn-inverse" type="button"><i class="fa fa-search"></i></button>
 	            </span>
 	        </div>
 	    </form>

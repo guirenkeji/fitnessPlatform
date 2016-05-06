@@ -109,8 +109,8 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route', 'selec
 		$scope.Page.PageNo = 1;
 	}
 	$scope.Page.searchKey='';
-	$http.post('/fitnessmanages/searchEmployee', $scope.Page, $http).success(function (result) {
-    	if (result.data) {
+	$http.post('/fitnessmanages/searchEmployee', $scope.Page).success(function (result) {
+    	if (result.got) {
     		$scope.employeelist = result.data;
     		
         }
@@ -133,6 +133,20 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route', 'selec
 		selectEmployeeID.setString(employeeID)
         window.location.href = 'fitnessmanages#/personnel/management/modify';
     };
+    
+    $scope.search= function (key){
+    	$scope.find={};
+    	$scope.find.PageNo=0
+    	$scope.find.searchKey=key;
+    	$http.post('/fitnessmanages/searchEmployee', $scope.find).success(function (result) {
+        	if (result.got) {
+        		$scope.employeelist = result.data;
+        		
+            }
+        });
+    }
+    
+    
 	
 }])
 

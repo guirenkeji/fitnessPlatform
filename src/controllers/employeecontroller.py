@@ -56,7 +56,7 @@ def searchEmployee():
         results.append({'id':employee.id,'name':employee.name,'phone':employee.phone,'wchat':employee.wchat,'birthday':bd,'address':employee.address,'sex':sex,'taozhang':'CN'})
     
 
-    return jsonify(data=results,row_count=len(employees),page_count=1,page_no=request.json['PageNo'])
+    return jsonify(got=True,data=results,row_count=len(employees),page_count=1,page_no=request.json['PageNo'])
 
 
 @employeemanages.route('/fitnessmanages/deleteEmployee',methods=["POST"])
