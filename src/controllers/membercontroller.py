@@ -48,7 +48,11 @@ def modifyMember():
 def searchMember():
     results=[]
     
-    members=memberservice.memberFuzzyQuery(request.json['searchKey'],offset=request.json['PageNo'])
+    pageNo = request.json['PageNo']
+    if pageNo >0:
+        pageNo -=1
+    
+    members=memberservice.memberFuzzyQuery(request.json['searchKey'],offset=pageNo)
     for member in members:
         coach=employeeservice.employeeGetByID(member.coach_id)
         if coach is None:
@@ -62,7 +66,7 @@ def searchMember():
             type = 'VIP'
         results.append({'id':member.id,'card':'%05d'%(member.id),'name':member.name,'phone':member.phone,'coach_name':coach,'type':type,'status':'ready'})
     
-    return jsonify(data=results,row_count=10,page_count=1,page_no=request.json['PageNo'])
+    return jsonify(got=True,data=results,row_count=10,page_count=1,page_no=pageNo)
 
 @memberManages.route('/fitnessmanages/getMember',methods=["POST"])
 def getMemberByID():
