@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">姓名 * :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
+							<input class="form-control" ng-model="formdata.name" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
 						</div>
 					</div>
 					<div class="form-group">
@@ -24,12 +24,12 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="radio col-md-3">
 								<label>
-									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
+									<input type="radio" ng-model="formdata.sex"  name="radiorequired" value="man" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
 								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
 							</div>
 							<div class="radio col-md-3">
 								<label>
-									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
+									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="woman" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
 								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
 							</div>
 						</div>

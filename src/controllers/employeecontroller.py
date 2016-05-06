@@ -65,13 +65,17 @@ def deleteEmployeeByID():
 
 @employeemanages.route('/fitnessmanages/getEmployee',methods=["POST"])
 def getEmployeeByID():
-    eid = request.args.get('id')
+    eid = request.json['id']
     employ=employeeservice.employeeGetByID(eid)
     info={}
-    for key in employ.__dict__:
-        if not key.startswith("_"):
-            info[key]=employ.__dict__[key]
+    info['name']=employ.name
+    info['birthday']=employ.birthday.strftime('%m/%d/%Y')
+    info['sex']=employ.sex
+    info['phone']=employ.phone
+    info['wchat']=employ.wchat
+    info['comments']=employ.comments
+    info['address']=employ.address
                 
 
-    jsonify(data=info)
+    return jsonify(got=True,data=info)
 

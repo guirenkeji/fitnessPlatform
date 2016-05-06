@@ -16,7 +16,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">姓名 * :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" ng-model="member.name" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
+							<input class="form-control" ng-model="formdata.name" type="text" id="fullname" name="fullname" placeholder="请输入姓名" data-parsley-required="true" data-parsley-id="6821">
 						</div>
 					</div>
 					<div class="form-group">
@@ -24,12 +24,12 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="radio col-md-3">
 								<label>
-									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
+									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="man" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 男
 								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
 							</div>
 							<div class="radio col-md-3">
 								<label>
-									<input type="radio" name="radiorequired" value="foo" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
+									<input type="radio" ng-model="formdata.sex" name="radiorequired" value="woman" id="radio-required" data-parsley-required="true" data-parsley-multiple="radiorequired" data-parsley-id="1926"> 女
 								</label><ul class="parsley-errors-list" id="parsley-id-multiple-radiorequired"></ul>
 							</div>
 						</div>
@@ -37,31 +37,31 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">手机 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-phone" data-parsley-type="number" placeholder="请输入手机号码" data-parsley-id="6140"><ul class="parsley-errors-list" id="parsley-id-6140"></ul>
+							<input class="form-control" ng-model="formdata.phone" type="text" id="data-phone" data-parsley-type="number" placeholder="请输入手机号码" data-parsley-id="6140"><ul class="parsley-errors-list" id="parsley-id-6140"></ul>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">微信号码 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" id="data-wchat" placeholder="请输入微信号码" data-parsley-id="6141"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
+							<input class="form-control" ng-model="formdata.wchat" type="text" id="data-wchat" placeholder="请输入微信号码" data-parsley-id="6141"><ul class="parsley-errors-list" id="parsley-id-6141"></ul>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">出生日期 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input type="text" class="form-control" id="datepicker-default" placeholder="请选择出生日期" value="">
+							<input type="text" ng-model="formdata.birthday" class="form-control" id="datepicker-default" placeholder="请选择出生日期" value="">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="website">住宿地址 :</label>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control"  type="text" id="data-address" placeholder="请输入住宿地址" data-parsley-id="6143"><ul class="parsley-errors-list" id="parsley-id-6143"></ul>
+							<input class="form-control" ng-model="formdata.address"  type="text" id="data-address" placeholder="请输入住宿地址" data-parsley-id="6143"><ul class="parsley-errors-list" id="parsley-id-6143"></ul>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="message">所属帐套 :</label>
 						<div class="col-md-6 col-sm-6">
-							<select class="form-control">
+							<select class="form-control" ng-model="formdata.taozhang">
                                 <option value="" selected="">请选择</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>
@@ -95,7 +95,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="message">备注 :</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929"></textarea>
+							<textarea class="form-control" ng-model="formdata.comments" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="请填写备注" data-parsley-id="8929"></textarea>
 							<ul class="parsley-errors-list" id="parsley-id-8929"></ul>
 						</div>
 					</div>

@@ -83,7 +83,7 @@ dashboard.service('selectEmployeeID', function() {
         }
     }
 });
-dashboard.controller('personnelManagement', ['$scope', '$http', '$route',function($scope,$http,$route){
+dashboard.controller('personnelManagement', ['$scope', '$http', '$route', 'selectEmployeeID',function($scope,$http,$route,selectEmployeeID){
 
 	$scope.init = function () {
 		// App.init();
@@ -115,7 +115,12 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route',functio
                 $route.reload();
             }
         });
-    }
+    };
+	
+	$scope.Modify = function (employeeID) {
+		selectEmployeeID.setString(employeeID)
+        window.location.href = 'fitnessmanages#/personnel/management/modify';
+    };
 	
 }])
 
@@ -146,21 +151,22 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
    }
 }])
 
-dashboard.controller('personnelModify',['$scope','$http', function($scope,$http,selectEmployeeID){
+dashboard.controller('personnelModify',['$scope','$http','selectEmployeeID', function($scope,$http,selectEmployeeID){
 
 	$scope.init = function () {
 		FormPlugins.init();
 		// App.init();
-		$scope.formdata = {};
-		http.post('/fitnessmanages/getEmployee', { id: selectEmployeeID.getString() }).success(function (result) {
-            if (result.modified) {
-                btn.button('reset');
-//                window.location.href = 'fitnessmanages#/memeber/management';
-//                $route.reload();
-                $scope.formdata=data
-            }
-        });
+		
 	}
+	
+	$scope.formdata = {};
+	$http.post('/fitnessmanages/getEmployee', { id: selectEmployeeID.getString() }).success(function (result) {
+        if (result.got) {
+//            window.location.href = 'fitnessmanages#/memeber/management';
+//            $route.reload();
+            $scope.formdata=result.data
+        }
+    });
 
 	$scope.modify = function () {
         
