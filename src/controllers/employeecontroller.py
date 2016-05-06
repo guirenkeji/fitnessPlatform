@@ -3,7 +3,7 @@ import json
 
 from flask import Module,render_template,jsonify, redirect, request,session,g
 from src.fitnessconfig import *
-from src.services import userservice,employeeservice,memberservice
+from src.services import userservice,employeeservice,roleservice
 from src.models.userprofile import UserStatus
 import datetime
 employeemanages = Module(__name__)
@@ -26,16 +26,18 @@ def addNewEmployee():
         birthday=datetime.datetime.strptime(birthday, '%m/%d/%Y').date() 
     address = addOne.get('address',None)
     sex = addOne.get('sex','man')
-    employeeservice.employeeAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,sex=sex)
+    employeeservice.employeeAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,sex=sex,comments=comments,role=addOne.get('role'))
     return jsonify(created=True)
 
 
 @employeemanages.route('/fitnessmanages/modifyEmployee',methods=["POST"])
 def modifyEmployee():
-    argDict=request.json.to_dict()
+    argDict=request.json
+    if argDict.has_key('birthday'):
+        argDict['birthday'] = datetime.datetime.strptime(argDict['birthday'], '%m/%d/%Y').date() 
     employeeservice.employeeModify(argDict.pop('id'),**argDict)
     
-    return jsonify(modified=True) 
+    return jsonify(updated=True) 
 
 
 @employeemanages.route('/fitnessmanages/searchEmployee',methods=["POST"])
@@ -74,6 +76,7 @@ def getEmployeeByID():
     info['phone']=employ.phone
     info['wchat']=employ.wchat
     info['comments']=employ.comments
+    info['role']= employ.role
     info['address']=employ.address
                 
 

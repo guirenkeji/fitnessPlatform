@@ -1,3 +1,15 @@
+//通用方法
+dashboard.filter('getById', function() {
+  return function(input, id) {
+    var i=0, len=input.length;
+    for (; i<len; i++) {
+      if (+input[i].id == +id) {
+        return input[i];
+      }
+    }
+    return null;
+  }
+});
 // 用户角色
 dashboard.controller('userManagement', ['$scope','$http', '$route',function($scope,$http,$route){
 //	$scpoe.query();
@@ -128,14 +140,22 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route', 'selec
 dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-		FormPlugins.init();
+//		FormPlugins.init();
 	}
+	
+	$scope.rolelist=[];
+	$http.post('/role/query').success(function (result) {
+		if (result.got) {
+            $scope.rolelist=result.data;
+        }
+		
+	 });
 	
 	$scope.create = function () {
         
 		 var btn = $("#btnCreate");
 	     btn.button('loading');
-	        
+	     
        $http({
          method  : 'POST',
          url     : '/fitnessmanages/addEmployee',
@@ -151,7 +171,7 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
    }
 }])
 
-dashboard.controller('personnelModify',['$scope','$http','selectEmployeeID', function($scope,$http,selectEmployeeID){
+dashboard.controller('personnelModify',['$scope','$http','$filter','selectEmployeeID', function($scope,$http,$filter,selectEmployeeID){
 
 	$scope.init = function () {
 		FormPlugins.init();
@@ -159,32 +179,56 @@ dashboard.controller('personnelModify',['$scope','$http','selectEmployeeID', fun
 		
 	}
 	
+	$scope.rolelist=[];
+	$http.post('/role/query').success(function (result) {
+		if (result.got) {
+            $scope.rolelist=result.data;
+        }
+		
+	 });
+	
 	$scope.formdata = {};
 	$http.post('/fitnessmanages/getEmployee', { id: selectEmployeeID.getString() }).success(function (result) {
         if (result.got) {
 //            window.location.href = 'fitnessmanages#/memeber/management';
 //            $route.reload();
             $scope.formdata=result.data
+            $scope.formdata['id']=selectEmployeeID.getString()
+            $scope.formdata['role'] = $filter('getById')($scope.rolelist, $scope.formdata['role']);
         }
     });
+	
+	
 
 	$scope.modify = function () {
         
 		 var btn = $("#btnCreate");
 	     btn.button('loading');
-	        
-        $http({
-          method  : 'POST',
-          url     : '/fitnessmanages/modifyEmployee',
-          data    : $scope.formdata, 
-          headers : {'Content-Type': 'application/json'} 
-         }).success(function (result) {
-        	 if (result.created) {
+         $http.post('/fitnessmanages/modifyEmployee', $scope.formdata).success(function (result) {
+        	 if (result.updated) {
                  $scope.AddSuccess = true;
                  window.location.href = "fitnessmanages#/personnel/management";
              }
         });
     }
+	
+	$scope.update = function () {
+        
+		var btn = $("#btnCreate");
+	     btn.button('loading');
+	        
+      $http({
+        method  : 'POST',
+        url     : '/fitnessmanages/modifyEmployee',
+        data    : $scope.formdata, 
+        headers : {'Content-Type': 'application/json'} 
+       }).success(function (result) {
+      	 if (result.updated) {
+               btn.button('reset');
+               window.location.href = "fitnessmanages#/personnel/management";
+           }
+      });
+  }
 }])
 
 //会员管理
