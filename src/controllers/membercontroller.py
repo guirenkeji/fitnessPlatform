@@ -16,18 +16,20 @@ def date_handler(obj):
 def addNewMember():
     
     addOne= request.get_json()
-    print "***"*20
-    import pprint
-    pprint.pprint(addOne)
+    memberid = addOne.get('memberid','')
     name = addOne.get('name')
     comments=addOne.get('comments',None)
     phone = addOne.get('phone')
     wchat = addOne.get('wchat',None)
     birthday = addOne.get('birthday',None)
+    coach_id = addOne.get('coach',None)
     if not birthday is None:
         birthday=datetime.datetime.strptime(birthday, '%m/%d/%Y').date() 
     address = addOne.get('address',None)
-    memberservice.memberAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,comments=comments)
+    if memberid != '':
+        memberservice.memberAdd(id=memberid,name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,comments=comments,coach_id=coach_id)
+    else:
+        memberservice.memberAdd(name=name,phone=phone,webChat=wchat,birthday=birthday,address=address,comments=comments,coach_id=coach_id)
     return jsonify(created=True)
 
 @memberManages.route('/fitnessmanages/deleteMember',methods=["POST"])
@@ -71,11 +73,15 @@ def searchMember():
 @memberManages.route('/fitnessmanages/getMember',methods=["POST"])
 def getMemberByID():
     eid = request.json['id']
-    member=memberservice.memberGetByID(eid)
+    member=memberservice.memberGetByID(eid) 
     info={}
     for key in member.__dict__:
         if not key.startswith("_"):
-            info[key]=member.__dict__[key]
+            if key == "birthday":
+                print 
+                info[key]=member.birthday.strftime('%m/%d/%Y')
+            else:
+                info[key]=member.__dict__[key]
                 
 
-    return jsonify(data=info, default=date_handler)
+    return jsonify(got=True,data=info)

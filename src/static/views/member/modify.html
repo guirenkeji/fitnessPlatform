@@ -78,18 +78,9 @@
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="message">身份 :</label>
 						<div class="col-md-6 col-sm-6">
-							<select class="form-control">
-                                <option value="" selected="">请选择</option>
-                                <option value="AF">Afghanistan</option>
-                                <option value="AL">Albania</option>
-                                <option value="DZ">Algeria</option>
-                                <option value="AS">American Samoa</option>
-                                <option value="AD">Andorra</option>
-                                <option value="AO">Angola</option>
-                                <option value="AI">Anguilla</option>
-                                <option value="AQ">Antarctica</option>
-                                <option value="AG">Antigua and Barbuda</option>
-                            </select>
+							<select ng-model="formdata.role" ng-options="item.id as item.rolename for item in rolelist track by item.id">
+							   <option value="">-- please choose an role --</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

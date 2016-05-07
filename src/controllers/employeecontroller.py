@@ -50,17 +50,41 @@ def searchEmployee():
     employees=employeeservice.employeeFuzzyQuery(key)
     for employee in employees:
         bd =employee.birthday
+        roleName=''
         if not bd is None:
             bd=bd.strftime('%m/%d/%Y')
         if employee.sex == 'man':
             sex='男'
         else:
             sex='女'
-        results.append({'id':employee.id,'name':employee.name,'phone':employee.phone,'wchat':employee.wchat,'birthday':bd,'address':employee.address,'sex':sex,'taozhang':'CN'})
+        roleName=roleservice.getNameByID(employee.role)
+        results.append({'id':employee.id,'name':employee.name,'role':roleName,'phone':employee.phone,'wchat':employee.wchat,'birthday':bd,'address':employee.address,'sex':sex,'taozhang':'CN'})
     
 
     return jsonify(got=True,data=results,row_count=len(employees),page_count=1,page_no=pageNo)
 
+@employeemanages.route('/fitnessmanages/searchEmployeeByRole',methods=["POST"])
+def searchEmployeeByRole():
+    key = request.json['searchKey']
+    pageNo = request.json['PageNo']
+    if pageNo >0:
+        pageNo -=1
+    results=[]
+    employees=employeeservice.employeeQueryByRoleName(key)
+    for employee in employees:
+        bd =employee.birthday
+        roleName=''
+        if not bd is None:
+            bd=bd.strftime('%m/%d/%Y')
+        if employee.sex == 'man':
+            sex='男'
+        else:
+            sex='女'
+        roleName=roleservice.getNameByID(employee.role)
+        results.append({'id':employee.id,'name':employee.name,'role':roleName,'phone':employee.phone,'wchat':employee.wchat,'birthday':bd,'address':employee.address,'sex':sex,'taozhang':'CN'})
+    
+
+    return jsonify(got=True,data=results,row_count=len(employees),page_count=1,page_no=pageNo)
 
 @employeemanages.route('/fitnessmanages/deleteEmployee',methods=["POST"])
 def deleteEmployeeByID():

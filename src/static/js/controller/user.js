@@ -183,12 +183,13 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
             }
        });
    }
+	
 }])
 
 dashboard.controller('personnelModify',['$scope','$http','$filter','selectEmployeeID', function($scope,$http,$filter,selectEmployeeID){
 
 	$scope.init = function () {
-		FormPlugins.init();
+//		FormPlugins.init();
 		// App.init();
 		
 	}
@@ -252,6 +253,21 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 //		FormPlugins.init();
 		$scope.formdata = {};
 	}
+	
+	$scope.coachlist=[];
+	$scope.Page = {};
+	if($("#PageNo").val()){
+		$scope.Page.PageNo = $("#PageNo").val();
+	}else{
+		$scope.Page.PageNo = 1;
+	}
+	$scope.Page.searchKey='教练';
+	$http.post('/fitnessmanages/searchEmployeeByRole',$scope.Page).success(function (result) {
+		if (result.got) {
+            $scope.coachlist=result.data;
+        }
+		
+	 });
 
 	$scope.create = function () {
         
@@ -272,12 +288,27 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
              }
         });
     }
+	
+	$scope.changeMemebrId=function(){
+		$http.post('/fitnessmanages/getMember',{'id':$scope.formdata.memberid}).success(function (result) {
+			if (result.got) {
+	            if (result.data){
+	            	var btn = $("#iderror");
+	       	        btn.removeClass('hidden');
+	            }
+	        }
+			
+		 }).error(function(){
+			 var btn = $("#iderror");
+	        btn.addClass('hidden');
+	        });
+	}
 }])
 
 dashboard.controller('memberModify', ['$scope', function($scope){
 
 	$scope.init = function () {
-		FormPlugins.init();
+//		FormPlugins.init();
 	}
 }])
 

@@ -62,6 +62,13 @@ def getNameByID(roleId):
     role = querys.filter_by(id=roleId).first()
     session.close()
     return role.name
+
+def getIDByName(roleName):
+    session = database.get_session()
+    querys=session.query(Role)
+    role = querys.filter_by(name=roleName).first()
+    session.close()
+    return role.id
    
 def varifyPermission(requiredPerm,roleID):
     seesion=database.get_session()

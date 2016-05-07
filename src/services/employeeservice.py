@@ -21,6 +21,15 @@ def employeeFuzzyQuery(key,offset=0,limit=10):
     querys=querys.limit(limit)
     return querys.all()
 
+def employeeQueryByRoleName(key,offset=0,limit=10):
+    seesion=get_session()
+    roleID=roleservice.getIDByName(key)
+    querys=seesion.query(Employee).filter(Employee.role==roleID)
+    
+    querys=querys.offset(offset)  
+    querys=querys.limit(limit)
+    return querys.all()
+
 def employeeGetByID(employId):
     """
     Query employee by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
