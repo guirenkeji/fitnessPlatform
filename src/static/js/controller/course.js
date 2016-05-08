@@ -116,6 +116,10 @@ dashboard.controller('privateCoursesManagement', ['$scope', '$http', function($s
 
 
 dashboard.controller('privateCoursesAdd', ['$scope','$http', function($scope,$http){
+	$scope.init = function () {
+		FormPlugins.init();
+	}
+	
     $scope.create = function () {
         var btn = $("#btnCreate");
         btn.button('loading');

@@ -154,7 +154,7 @@ dashboard.controller('personnelManagement', ['$scope', '$http', '$route', 'selec
 dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
-//		FormPlugins.init();
+		FormPlugins.init();
 	}
 	
 	$scope.rolelist=[];
