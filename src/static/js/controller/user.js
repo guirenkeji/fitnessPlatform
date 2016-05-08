@@ -377,7 +377,7 @@ dashboard.controller('memberModify',['$scope','$http','$filter','selectMemberID'
             $scope.formdata=result.data
             $scope.formdata['id']=selectMemberID.getString()
             $scope.formdata['memberid']=$scope.formdata['id']
-            $scope.formdata['coach'] = $filter('getById')($scope.coachlist, $scope.formdata['coach_id']);
+            $scope.formdata['coach_id'] = $filter('getById')($scope.coachlist, $scope.formdata['coach_id']);
         }
     });
 	
