@@ -48,11 +48,13 @@ def createRoleAdd(rolename,taozhang,comments):
     seesion.commit()
     seesion.close()
        
-def query_role():
+def query_role(key=''):
     
     session = database.get_session()
-
-    rolelist = session.query(Role).all()
+    querys=session.query(Role)
+    if key !='':
+        querys=querys.filter(Role.name.like("%"+key+"%"))
+    rolelist = querys.all()
     session.close()
     return rolelist
  

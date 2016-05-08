@@ -158,7 +158,7 @@ dashboard.controller('personnelAdd',['$scope','$http', function($scope,$http){
 	}
 	
 	$scope.rolelist=[];
-	$http.post('/role/query').success(function (result) {
+	$http.post('/role/query',{"searchName":""}).success(function (result) {
 		if (result.got) {
             $scope.rolelist=result.data;
         }
@@ -195,7 +195,7 @@ dashboard.controller('personnelModify',['$scope','$http','$filter','selectEmploy
 	}
 	
 	$scope.rolelist=[];
-	$http.post('/role/query').success(function (result) {
+	$http.post('/role/query',{"searchName":""}).success(function (result) {
 		if (result.got) {
             $scope.rolelist=result.data;
         }
@@ -286,6 +286,14 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
         }
 		
 	 });
+	
+	$scope.rolelist=[];
+	$http.post('/role/query',{"searchName":"会员"}).success(function (result) {
+		if (result.got) {
+            $scope.rolelist=result.data;
+        }
+		
+	 });
 
 	$scope.create = function () {
         
@@ -373,6 +381,15 @@ dashboard.controller('memberModify',['$scope','$http','$filter','selectMemberID'
         }
     });
 	
+	$scope.rolelist=[];
+	$http.post('/role/query',{"searchName":"会员"}).success(function (result) {
+		if (result.got) {
+            $scope.rolelist=result.data;
+            $scope.formdata['role'] = $filter('getById')($scope.rolelist, $scope.formdata['role']);
+        }
+		
+	 });
+	
 	
 
 	$scope.update = function () {
@@ -380,7 +397,7 @@ dashboard.controller('memberModify',['$scope','$http','$filter','selectMemberID'
 		 var btn = $("#btnCreate");
 	     btn.button('loading');
          $http.post('/fitnessmanages/modifyMember', $scope.formdata).success(function (result) {
-        	 if (result.updated) {
+        	 if (result.modified) {
                  $scope.AddSuccess = true;
                  window.location.href = "fitnessmanages#/member/management";
              }
@@ -422,6 +439,18 @@ dashboard.controller('memberManagement', ['$scope', '$http','$route','selectMemb
 			selectMemberID.setString(memberID)
 	        window.location.href = 'fitnessmanages#/member/management/modify';
 	    };
+	    
+	    $scope.search= function (key){
+	    	$scope.find={};
+	    	$scope.find.PageNo=0
+	    	$scope.find.searchKey=key;
+	    	$http.post('/fitnessmanages/searchMember', $scope.find).success(function (result) {
+	        	if (result.got) {
+	        		$scope.memberlist = result.data;
+	        		
+	            }
+	        });
+	    }
 		
 	
 	    $scope.init = function () {

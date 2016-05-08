@@ -8,9 +8,9 @@
 	<div class="col-12">
 		<form class="user-management-search">
 	        <div class="input-group m-b-15">
-	            <input type="text" class="form-control input-sm input-white" placeholder="Search">
+	            <input type="text" ng-model="searchKey" class="form-control input-sm input-white" placeholder="Search">
 	            <span class="input-group-btn">
-	                <button class="btn btn-sm btn-inverse" type="button"><i class="fa fa-search"></i></button>
+	                <button ng-click="search(searchKey)" class="btn btn-sm btn-inverse" type="button"><i class="fa fa-search"></i></button>
 	            </span>
 	        </div>
 	    </form>
@@ -55,7 +55,7 @@
 									<td>{{member.name}}</td>
 									<td>{{member.card}}</td>
 									<td>{{member.phone}}</td>
-									<td>{{member.type}}</td>
+									<td>{{member.role}}</td>
 									<td>{{member.coach_name}}</td>
 									<td>{{member.status}}</td>
 									<td>

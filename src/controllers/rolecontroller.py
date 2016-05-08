@@ -34,9 +34,10 @@ def deleteRole():
 
 @role.route('/role/query',methods=['POST'])
 def queryRole():
-    list = roleservice.query_role()
+    key=request.json.get('searchName',"")
+    lists = roleservice.query_role(key)
     rolelist = []
-    for i in list:
+    for i in lists:
         rolelist.append({'id':i.id,'rolename':i.name,'permission':'管理员','taozhang':i.taozhang})
     return jsonify(got=True,data=rolelist)
 

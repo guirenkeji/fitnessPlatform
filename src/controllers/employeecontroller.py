@@ -33,6 +33,9 @@ def addNewEmployee():
 @employeemanages.route('/fitnessmanages/modifyEmployee',methods=["POST"])
 def modifyEmployee():
     argDict=request.json
+    roleItem=argDict['role']
+    if type(roleItem)==dict:
+        argDict['role']=argDict['role']["id"]
     if argDict.has_key('birthday'):
         argDict['birthday'] = datetime.datetime.strptime(argDict['birthday'], '%m/%d/%Y').date() 
     employeeservice.employeeModify(argDict.pop('id'),**argDict)

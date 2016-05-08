@@ -5,7 +5,7 @@ Created on Apr 17, 2016
 '''
 from src.models.database import get_session
 from src.models.member import Member
-import datetime
+from datetime import datetime
 from sqlalchemy import or_
 
 
@@ -51,9 +51,11 @@ def memberModify(employId,**args):
     session.add(member)
     for item in args:
         if hasattr(member, item):
-            setattr(member, item,args[item])
-        else:
-            raise "Member Didn't have this property: " + item
+            if item =='birthday':
+                birthday= datetime.strptime(args[item], '%m/%d/%Y').date() 
+                setattr(member,item,birthday)
+            else:
+                setattr(member, item,args[item])
     session.commit()
     session.close()
 
