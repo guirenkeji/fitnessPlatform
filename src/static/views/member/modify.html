@@ -13,6 +13,15 @@
             </div>
             <div class="panel-body panel-form">
                 <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="" >
+                    
+                    <div class="form-group">
+                        <div class="alert alert-danger hidden" role="alert" id="iderror">会员号重复或者错误</div>
+						<label class="control-label col-md-4 col-sm-4" for="fullname">会员号  :</label>
+						<div class="col-md-6 col-sm-6">
+							<input type="number" ng-change="changeMemebrId()" class="form-control" ng-model="formdata.memberid" type="text" id="memberid" name="memberid" placeholder="输入姓名或自动生成" data-parsley-required="true" data-parsley-id="6821">
+						</div>
+					</div>
+                    
 					<div class="form-group">
 						<label class="control-label col-md-4 col-sm-4" for="fullname">姓名 * :</label>
 						<div class="col-md-6 col-sm-6">
@@ -80,6 +89,14 @@
 						<div class="col-md-6 col-sm-6">
 							<select ng-model="formdata.role" ng-options="item.id as item.rolename for item in rolelist track by item.id">
 							   <option value="">-- please choose an role --</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-4 col-sm-4" for="message">教练 :</label>
+						<div class="col-md-6 col-sm-6">
+							<select  ng-options="item.id as item.name for item in coachlist track by item.id" ng-model="formdata.coach">
+							    <option value="">-- 请选择教练 --</option>
 							</select>
 						</div>
 					</div>

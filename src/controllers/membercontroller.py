@@ -40,10 +40,10 @@ def deleteMember():
 
 @memberManages.route('/fitnessmanages/modifyMember',methods=["GET"])
 def modifyMember():
-    argDict=request.args.to_dict()
+    argDict=request.json
     memberservice.memberModify(argDict.pop('id'),**argDict)
     
-    return redirect('/fitnessmanages?fullname=&message=#/personnel/management/add')    
+    return jsonify(modified=True)    
 
 
 @memberManages.route('/fitnessmanages/searchMember',methods=["POST"])

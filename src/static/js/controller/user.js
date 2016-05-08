@@ -247,6 +247,24 @@ dashboard.controller('personnelModify',['$scope','$http','$filter','selectEmploy
 }])
 
 //会员管理
+dashboard.service('selectMemberID', function() {
+    var stringValue = '';
+    var objectValue = {
+        data: ''
+    };
+    
+    return {
+        getString: function() {
+            return stringValue;
+        },
+        setString: function(value) {
+            stringValue = value;
+        },
+        getObject: function() {
+            return objectValue;
+        }
+    }
+});
 dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 
 	$scope.init = function () {
@@ -305,14 +323,73 @@ dashboard.controller('memberAdd',['$scope','$http', function($scope,$http){
 	}
 }])
 
-dashboard.controller('memberModify', ['$scope', function($scope){
+dashboard.controller('memberModify',['$scope','$http','$filter','selectMemberID', function($scope,$http,$filter,selectMemberID){
 
 	$scope.init = function () {
 //		FormPlugins.init();
+		// App.init();
+		
 	}
+	
+	$scope.changeMemebrId=function(){
+		$http.post('/fitnessmanages/getMember',{'id':$scope.formdata.memberid}).success(function (result) {
+			if (result.got) {
+	            if (result.data){
+	            	var btn = $("#iderror");
+	       	        btn.removeClass('hidden');
+	            }
+	        }
+			
+		 }).error(function(){
+			 var btn = $("#iderror");
+	        btn.addClass('hidden');
+	        });
+	}
+	
+	$scope.coachlist=[];
+	$scope.Page = {};
+	if($("#PageNo").val()){
+		$scope.Page.PageNo = $("#PageNo").val();
+	}else{
+		$scope.Page.PageNo = 1;
+	}
+	$scope.Page.searchKey='教练';
+	$http.post('/fitnessmanages/searchEmployeeByRole',$scope.Page).success(function (result) {
+		if (result.got) {
+            $scope.coachlist=result.data;
+        }
+		
+	 });
+	
+	$scope.formdata = {};
+	$http.post('/fitnessmanages/getMember', { id: selectMemberID.getString() }).success(function (result) {
+        if (result.got) {
+//            window.location.href = 'fitnessmanages#/memeber/management';
+//            $route.reload();
+            $scope.formdata=result.data
+            $scope.formdata['id']=selectMemberID.getString()
+            $scope.formdata['memberid']=$scope.formdata['id']
+            $scope.formdata['coach'] = $filter('getById')($scope.coachlist, $scope.formdata['coach_id']);
+        }
+    });
+	
+	
+
+	$scope.update = function () {
+        
+		 var btn = $("#btnCreate");
+	     btn.button('loading');
+         $http.post('/fitnessmanages/modifyMember', $scope.formdata).success(function (result) {
+        	 if (result.updated) {
+                 $scope.AddSuccess = true;
+                 window.location.href = "fitnessmanages#/member/management";
+             }
+        });
+    }
+	
 }])
 
-dashboard.controller('memberManagement', ['$scope', '$http','$route', function($scope,$http,$route){
+dashboard.controller('memberManagement', ['$scope', '$http','$route','selectMemberID',function($scope,$http,$route,selectMemberID){
 		var self = this;
 		$scope.Page = {};
 		if($("#PageNo").val()){
@@ -340,6 +417,11 @@ dashboard.controller('memberManagement', ['$scope', '$http','$route', function($
 	            }
 	        });
 	    }
+		
+		$scope.Modify = function (memberID) {
+			selectMemberID.setString(memberID)
+	        window.location.href = 'fitnessmanages#/member/management/modify';
+	    };
 		
 	
 	    $scope.init = function () {
