@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*- 
 from flask import Module,render_template,redirect,request,session,jsonify,g
-from src.services import userservice
+from src.services import userservice,employeeservice
 from src.controllers.filters import login_filter
 
 user = Module(__name__)

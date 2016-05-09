@@ -5,12 +5,11 @@ from datetime import datetime
 #from projectTeam.powerteamconfig import PAGESIZE
 from sqlalchemy.sql.expression import or_
 from src.fitnessconfig import *
+from src.services import employeeservice
 
 def get(email):
-    session = database.get_session()
 
-    user = session.query(UserProfile).filter(UserProfile.Email == email).first()
-    session.close()
+    user = employeeservice.employeeGetByName(email)
     return user
 
 def get_user_by_id(user_id):

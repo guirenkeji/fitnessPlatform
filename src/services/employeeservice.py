@@ -40,6 +40,16 @@ def employeeGetByID(employId):
     seesion.close()
     return employee
 
+def employeeGetByName(employName):
+    """
+    Query employee by name,phone,wehchat. it could be used for page when using offset,limit. Default is return first 10
+    """
+    seesion=get_session()
+    querys=seesion.query(Employee).filter(Employee.name==employName)
+    employee=querys.first()
+    seesion.close()
+    return employee
+
 def employeeDeleteByID(employId):
     """
     Delete employee by id

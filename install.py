@@ -15,13 +15,38 @@ print(u'创建数据库完成')
 
 session = database.get_session()
 
-admin = UserProfile()
-admin.Email = 'admin@admin.com'
-admin.Nick = u'admin'
-admin.Password = 'admin'
-admin.Status = UserStatus.Enabled
-admin.IsAdmin = True
-admin.RegDate = datetime.now()
+manage=Role()
+manage.name=u"管理员"
+session.add(manage)
+session.commit()
+
+role=Role()
+role.name=u"普通会员"
+session.add(role)
+session.commit()
+
+role=Role()
+role.name=u"VIP会员"
+session.add(role)
+session.commit()
+
+manage=Role()
+manage.name=u"管理员"
+session.add(manage)
+session.commit()
+
+role=Role()
+role.name=u"教练"
+session.add(role)
+session.commit()
+
+
+admin = Employee()
+admin.name = 'admin'
+admin.phone = '1888888888'
+admin.password = 'admin'
+admin.role=manage.id
+
 session.add(admin)
 session.commit()
 session.close()

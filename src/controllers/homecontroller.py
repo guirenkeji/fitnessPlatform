@@ -2,7 +2,7 @@
 
 from flask import Module,render_template,jsonify, redirect, request,session,g
 from src.fitnessconfig import *
-from src.services import userservice
+from src.services import userservice,employeeservice
 from src.models.userprofile import UserStatus
 
 home = Module(__name__)
@@ -26,17 +26,12 @@ def login():
         response = jsonify(isDisabled = False,isMatch=False)
         return response
 
-    if user.Status == UserStatus.Disabled:
-        response = jsonify(isDisabled = True,isMatch=None)
-        return response
-
-    if not user.Password == password:
+    if not user.password == password:
         response = jsonify(isDisabled = False,isMatch=False)
         return response
 
-    session['userid'] = user.UserId
-    session['username'] = user.Email
-    session['isadmin'] = user.IsAdmin
+    session['userid'] = user.id
+    session['username'] = user.name
     response = jsonify(isDisabled=False,isMatch=True)
     return response
 

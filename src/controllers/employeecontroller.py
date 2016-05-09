@@ -45,7 +45,7 @@ def modifyEmployee():
 
 @employeemanages.route('/fitnessmanages/searchEmployee',methods=["POST"])
 def searchEmployee():
-    key = request.json['searchKey']
+    key = request.json.get('searchKey',"")
     pageNo = request.json['PageNo']
     if pageNo >0:
         pageNo -=1
