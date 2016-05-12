@@ -11,13 +11,32 @@ dashboard.filter('getById', function() {
   }
 });
 // 用户角色
-dashboard.controller('userManagement', ['$scope','$http', '$route',function($scope,$http,$route){
+dashboard.service('selectRoleID', function() {
+    var stringValue = '';
+    var objectValue = {
+        data: ''
+    };
+    
+    return {
+        getString: function() {
+            return stringValue;
+        },
+        setString: function(value) {
+            stringValue = value;
+        },
+        getObject: function() {
+            return objectValue;
+        }
+    }
+});
+dashboard.controller('userManagement', ['$scope','$http','$filter','$route','selectRoleID', function($scope,$http,$filter,$route,selectRoleID){
 //	$scpoe.query();
-	$scope.Query = { PageNo: 1, role: ''};
+	$scope.Query = { PageNo: 1, searchKey: ''};
+	$scope.formData = {};
 	$scope.init = function () {
 		// App.init();
 	};
-	$scope.formData = {};
+	
 	$scope.Delete = function (roleID) {
         var btn = $("#btnDelete");
         btn.button('loading');
@@ -47,7 +66,24 @@ dashboard.controller('userManagement', ['$scope','$http', '$route',function($sco
             $scope.RoleList = result.data;
 
         });
-    }    
+    }
+    
+    $scope.Modify = function (roleID) {
+    	selectRoleID.setString(roleID)
+        window.location.href = 'fitnessmanages#/user/management/modify';
+    };
+    
+    $scope.search= function (key){
+    	$scope.find={};
+    	$scope.find.PageNo=0
+    	$scope.find.searchKey=key;
+    	$http.post('/role/search', $scope.find).success(function (result) {
+        	if (result.got) {
+        		$scope.RoleList = result.data;
+        		
+            }
+        });
+    }
 
 }])
 
@@ -55,8 +91,22 @@ dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
 	$scope.init = function () {
 		// FormPlugins.init();
 	}
+	$scope.perms=[]
+	$scope.permissions=[]
+	$scope.formData={}
+	$scope.formData.permissions=0
+	$http.post('/role/permissionQury',{id:""}).success(function (result) {
+    	if (result.got) {
+    		$scope.permissions = result.data;
+    		
+        }
+    }).error(function (data, status, headers, config) { });
 	
     $scope.create = function () {
+    	angular.forEach($scope.perms, function(value, key) {
+    		  console.log(key + ': ' + value);
+    		  $scope.formData.permissions += value
+    		});
         $http.post('/role/add', $scope.formData).success(function (result) {
         	if (result.created) {
                 window.location.href = 'fitnessmanages#/user/management'
@@ -69,11 +119,54 @@ dashboard.controller('userAdd', ['$scope','$http', function($scope,$http){
 
 
 
-dashboard.controller('userModify', ['$scope', function($scope){
+dashboard.controller('userModify',  ['$scope','$http','$filter','selectRoleID', function($scope,$http,$filter,selectRoleID){
 
 	$scope.init = function () {
-		FormPlugins.init();
+		// FormPlugins.init();
+		$scope.perms=[]
+		$scope.permissions=[]
+		$scope.formData={}
+		$scope.formData.permissions=0
+		$http.post('/role/permissionQury',{ id: selectRoleID.getString() }).success(function (result) {
+	    	if (result.got) {
+	    		$scope.permissions = result.data;
+	    		angular.forEach($scope.permissions, function(value, key) {
+	    			  if (value.checked > 0){
+	    				  $scope.perms[key]=value.right
+	    			  } else {
+	    				  $scope.perms[key]=value.wrong
+	    			  }
+	    			});
+	    		
+	        }
+	    }).error(function (data, status, headers, config) { });
+		
+		$http.post('/role/get', { id: selectRoleID.getString() }).success(function (result) {
+	        if (result.got) {
+//	            window.location.href = 'fitnessmanages#/memeber/management';
+//	            $route.reload();
+	            $scope.formData=result.data
+	            $scope.formData['id']=selectRoleID.getString()
+	        }
+	    });
 	}
+	
+	
+	
+	
+	$scope.update = function () {
+		$scope.formData.permissions=0
+		angular.forEach($scope.perms, function(value, key) {
+  		  $scope.formData['permissions'] += value
+  		});
+        $http.post('/role/update', $scope.formData).success(function (result) {
+       	 if (result.updated) {
+                window.location.href = "fitnessmanages#/user/management";
+            }
+       });
+   }
+	
+	
 }])
 
 // 人事管理

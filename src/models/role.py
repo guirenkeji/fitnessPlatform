@@ -13,15 +13,10 @@ class Permission:
     Permission
     """
     NO_PERMISSION =0x00
-    SELF_READ = 0x01 
-    SELF_WRITE = 0x02
-    MEMBER_READ = 0x04
-    MEMBER_WRITE = 0x08
-    EMPLOYEE_READ = 0x10
-    EMPLOYEE_WRITE = 0x20
-    ACCOUNTING_READ = 0x40
-    ACCOUNTING_WRITE = 0x80
-    CROSS_SITE = 0x100
+    MEMBER_MANAGE = 0x01 
+    COURSE_MANAGE = 0x02
+    PRODUCT_ADD = 0x04
+    PRODUCT_SEARECH = 0x08
 
 class Role(BaseModel):
     """

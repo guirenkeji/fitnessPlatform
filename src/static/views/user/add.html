@@ -24,19 +24,14 @@
 			         <div class="form-group">
 						<label class="control-label col-md-4 col-sm-4"> 授权列表 :</label>
 						<div class="col-md-6 col-sm-6">
-							<label class="checkbox-inline">
-                                <input type="checkbox" value="">
-                                用户1
-                            </label>
-                            <br>
-                            <label class="checkbox-inline">
-                                <input type="radio" value="">
-                                一级
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="radio" value="">
-                                二级
-                            </label>
+							
+							<div ng-repeat="permission in permissions">
+							   <label class="checkbox-inline">
+                                <input type="checkbox" ng-true-value="{{permission.right}}" ng-false-value="{{permission.wrong}}" ng-model="perms[$index]" />{{permission["name"]}}                         
+                                </label>
+                            </div>
+                              
+                           
 						</div>
 					</div>
 					<div class="form-group">
